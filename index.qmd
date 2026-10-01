@@ -15,19 +15,38 @@ bibliography: bibliography.bib
 ## Abstract {.unnumbered}
 
 ###### Introduction
-The research question and a succinct motivation for answering it. 
+
+A data visualisation can be described as an encoding of information
+into a visual elements---data symbols.
+The commonly-stated purpose of guides (axes and legends) is to allow
+us to decode information from the data symbols.
+However, guides are themselves composed of visual elements.
+This article aims to answer the question:
+If guides allow us to decode data symbols, what allows us to
+decode guides?
 
 ###### Theory/model
 
-*For theories or models*:
-A description of the theory or model, its key organizing principle, or
-new insights that might be gained from it
+We propose that:  guides are also encodings of information,
+just like data symbols;
+information is decoded separately from both data symbols and 
+from guides;
+information from data symbols and guides is combined 
+via Gestalt principles such as proximity and similarity.
 
 ###### Conclusion
-An interpretation of results, lessons learned, etc. in the context of the research question and its implications. _Avoid overgeneralizing_, and _avoid broad behavioral claims without strong evidence._ 
+
+Given this understanding of how guides work, 
+we can question the design of even the most standard guides, such
+as axes and legends.
+This leads to a novel x-axis design for quantitative length encodings
+and an improved legend design 
+for quantitative colour encodings.
 
 ###### Materials
-Link to repositories containing raw data, open source code or (pre-)registration number/links.
+
+The source code and data sets for this article are available
+from [GitHub](https://github.com/pmur002/jovi-murrell-demystify).
 
 :::
 
@@ -35,11 +54,12 @@ Link to repositories containing raw data, open source code or (pre-)registration
 ::: {.callout-note appearance="simple" icon=false collapse=true}
 ## Materials, Authorship, License, Conflicts
 
-Fill in the following sections in this infobox per the [JoVI Author Guide](https://www.journalovi.org/author-guide.html#sections), then delete this line.
-
 ###### Research materials
 
-See [the corresponding section in the author guide](https://www.journalovi.org/author-guide.html#research-material-statements).
+**
+TODO
+Add OSF or FigShare link
+**
 
 ###### Authorship
 
@@ -151,7 +171,7 @@ legend <- grid.get("guide-box-right", grep=TRUE)
 ```
 
 The axes, the legend, and even the title, are collectively known as *guides*
-[@wilkinson2005grammar] or *scaffolding* [@cairo2019howchartslie] because they 
+[@wilkinson2005grammar] because they 
 share a common purpose:  they explain how data values are encoded
 within the plot.
 The guides are there to help us to decode the data symbols.
@@ -164,38 +184,42 @@ is different from turquoise.
 The legend is necessary to explain *which* group corresponds to each 
 colour---salmon means imports and turquoise means exports.
 
-**
-TODO
-Cite some guidelines that say guides are essential
-(without going into how they work).
-Get a juicy quote or two that makes it look like guides are
-"magically" inverting the encodings of data symbols.
-**
-
-This description of how guides work
-in a data visualisation appears sensible,
-but it is superficial.
-In particular, it ignores how we decode information from the guides
-themselves.
-**If guides allow us to decode data symbols, what allows us to
-decode guides?**
-
-We have a much deeper understanding
+We have an understanding
 of how data symbols work.
 For example, we know that encoding trade amounts as the lengths of
 bars will result in an accurate decoding of their relative lengths,
 particularly when they share a common baseline
-[@cleveland1984graphical; @ware2020information].
-We know *why* bars are effective data symbols.
+[@cleveland1984graphical; @heer2010crowdsourcing].
+We know *why* bars are effective data symbols and this helps us
+to make deliberate choices for encoding information as data symbols.
 
-The purpose of this article is to consider how guides work
-in greater depth.
-The goal is to form a better understanding of what makes an effective 
+However, we lack corresponding explanations for how guides work.
+The *purpose* of guides---to allow a data visualisation to be decoded---is 
+often stated
+[e.g., @heer_scales_axes_legends],
+but the mechanism by which guides achieve their purpose remains 
+a mystery (see @fig-guide-myth).
+
+```{r}
+#| label: fig-guide-myth
+#| echo: FALSE
+#| out-width: 4.1in
+#| fig.cap: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information.
+include_graphics("Diagrams/guide-myth.svg")
+```
+
+The goal of this article is to consider how guides work
+in greater depth---to form a better understanding of what makes an effective 
 guide.
 As a result, we hope to 
 encourage a more intentional and reasoned use of guides
-in data visualisation, and we will discover some ways
-in which even very standard and established guides might be improved.
+in data visualisation.
+Rather than relying on dogmatic rules of thumb, such as "always label your axes"
+[@xkcd833], we would like to arm ourselves with 
+the means to justify our choice of guides.
+We will also demonstrate that a deeper understanding of guides
+makes it possible to question the design of
+even very standard and established guides.
 
 ## Guides are encodings too {#sec:encodings}
 
@@ -271,6 +295,7 @@ country names---from the text shapes (see @fig-text-guide).
 ```{r}
 #| label: fig-text-guide
 #| echo: FALSE
+#| out-width: 4.1in
 #| fig.cap: The simplest sort of guide consists only of text labels, like the y-axis in @fig-trade-bars.  Data values are encoded as the shape of text labels just as data values are encoded as the visual features of data symbols. The difference is that absolute values can be decoded from text labels, whereas only relative values can be decoded from data symbols.  A value decoded from the text label is associated with a data symbol, and values decoded from the data symbol, through the proximity of the text label to the data symbol.
 include_graphics("Diagrams/text-guide.svg")
 ```
@@ -287,6 +312,68 @@ are placed right next to the corresponding data symbol bars
 This proximity means that we can associate the information that we decode
 from the text labels---the country names---with the associated bars
 (see @fig-text-guide).
+
+### Annotations
+
+@fig-trade-bars-annotation
+shows a variation on @fig-trade-bars,
+with an *annotation* added.
+This is another sort of guide that consists of
+a label to describe a
+point of interest.
+In this case, the point is that the United Kingdom,
+New Zealand's largest trade partner a century ago, is a much smaller
+partner (in relative terms) in the present day.
+
+```{r}
+#| label: fig-trade-bars-annotation
+#| echo: FALSE
+#| fig-keep: last
+#| fig-cap: "A bar plot of international trade between New Zealand and its major partners in 2024 with an annotation indicating New Zealand's largest trading partner in 1924."
+ann <- function(data, coords) {
+    i <- which(data$y == 4)[2]
+    lab <- textGrob("largest trade partner in 1924",
+                    x=.5, y=.2, hjust=0,
+                    gp=gpar(lineheight=.9))
+    curve <- curveGrob(unit(.5, "npc") - unit(1, "mm"), .2, 
+                       unit(coords$x[i], "npc") + unit(1, "mm"),
+                       coords$y[i], inflect=TRUE,
+                       curvature=-1,
+                       arrow=arrow(angle=15, length=unit(2, "mm"), 
+                                   type="closed"),
+                       gp=gpar(fill="black"))
+    grobTree(lab, curve)
+}
+ggAnn <- ggBar() +
+    grid_panel(ann, aes(amount, country)) +
+    coord_cartesian(clip="off")
+grid.rect(gp=gpar(col="grey"))
+pushViewport(viewport(width=unit(1, "npc") - margin,
+                      height=unit(1, "npc") - margin,))
+print(ggAnn, newpage=FALSE)
+grid.force()
+legend <- grid.get("guide-box-right", grep=TRUE)
+```
+
+We can explain the effectiveness of the annotation in 
+@fig-trade-bars-annotation
+using the same approach that we used to explain the y-axis.
+
+The annotation label is an encoding of information as the shape of text and
+we can decode absolute information from that text.
+This information is associated with the United Kingdom not by proximity, but
+by *connection*;  there is a line drawn between the position of 
+the annotation label
+and the position of the data symbols for the United Kingdom
+(see @fig-text-guide-annotation).
+
+```{r}
+#| label: fig-text-guide-annotation
+#| echo: FALSE
+#| out-width: 4.1in
+#| fig.cap: The annotation in @fig-trade-bars-annotation works in a very similar way to the y-axis in @fig-trade-bars.  Information is encoded as the shape of text label and that information can be decoded from the text label.  This information is associated with information from the data symbols, and values decoded from the data symbols, through the *connection* that is created by the line between the text label and the data symbols for the United Kingdom.
+include_graphics("Diagrams/text-guide-annotation.svg")
+```
 
 ## Guides contain geometric shapes too {#sec:geoms}
 
@@ -354,7 +441,7 @@ see @fig-text-geom-guide).
 ```{r}
 #| label: fig-text-geom-guide
 #| echo: FALSE
-#| out-width: 70%
+#| out-width: 6.2in
 #| fig.cap: A guide may contain geometric shapes as well as text labels, for example, the legend in @fig-trade-bars.  Data values are encoded as visual features of geometric shapes in the legend just like they are for data symbols. Values decoded from the shapes in a legend, or from text labels associated with those shapes, are associated with the values decoded from data symbols, through the similarity of the shapes in the legend and the shapes in the data symbols.
 include_graphics("Diagrams/text-geom-guide.svg")
 ```
@@ -826,7 +913,7 @@ grid.refresh()
 dev.off()
 ```
 
-### Improving a gradient colour legend
+### Improving a quantitative colour legend
 
 We now turn to a new example in order to demonstrate another common
 type of guide.
@@ -962,6 +1049,12 @@ because the geometric shapes in the legend
 and in the data symbols are the same size and shape and, in both cases,
 the circles are surrounded by a white background.
 
+**
+TODO
+Note the analogy of in improved color legend with x axis
+Quantitative guide presents examples of data values nor all possible data values
+**
+
 ```{r}
 #| label: fig-corr-mats-penguin-geom
 #| echo : FALSE
@@ -1004,14 +1097,64 @@ grid.force()
 grid.remove("guide-box-right", grep=TRUE)
 ```
 
+## Guides do not necessarily need data symbols
+
+**
+TODO
+Discussion of importance of text - need to talk about the title!
+**
+
+**
+TODO
+Don't forget Wilkinson's 
+"the *label()* attribute can serve as a guide".
+"guide to guides" comment about labels on guides.
+[p347-348 2nd Edition]
+**
+
+```{r}
+#| label: fig-text-standalone
+#| echo: FALSE
+#| out-width: 2.1in
+#| fig.cap: A guide may consist only of text labels and need no association with data symbols, for example, the title in @fig-trade-bars.  In this case, the value of the guide comes directly from being able to decode absolute information (about the data visualisation as a whole) from the text label.
+include_graphics("Diagrams/text-standalone.svg")
+```
+
 ## Discussion
 
-We have developed a framework that 
-views guides as encodings of information, just like data symbols
-are encodings of information, and that views guides
-as visual components that we decode information, just
+**
+TODO
+Add explicit list of "discoveries"
+**
+
+We have taken the view that 
+guides are encodings of information, just like data symbols
+are encodings of information.
+Furthermore, guides are 
+visual elements that we decode information from, just
 like we decode information from data symbols.
-This framework allows us to think more clearly about how a guide
+
+The main difference between guides and data symbols is that
+guides encode information as text labels whereas 
+data symbols encode information as geometric shapes
+(though some guides also encode information as geometric shapes).
+
+Information from guides is associated with information
+from data symbols via Gestalt processes like
+proximity, connection, and similarity.
+
+**
+TODO
+Some guides are standalone (requiring no association with data symbols)
+e.g., titles
+**
+
+In summary, a guide is an encoding of information as a text label.
+Many guides also employ Gestalt principles to
+associate the text label with corresponding data
+symbols.
+
+This approach allows us to think more clearly about how a guide
 contributes to the effectiveness of a data visualisation.
 Armed with this knowledge, we are able to be more deliberate in
 our choice of guides and we are able to more effectively critique

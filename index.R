@@ -83,10 +83,57 @@ legend <- grid.get("guide-box-right", grep=TRUE)
 
 
 ## -----------------------------------------------------------------------------
+#| label: fig-guide-myth
+#| echo: FALSE
+#| out-width: 4.1in
+#| fig.cap: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information.
+include_graphics("Diagrams/guide-myth.svg")
+
+
+## -----------------------------------------------------------------------------
 #| label: fig-text-guide
 #| echo: FALSE
+#| out-width: 4.1in
 #| fig.cap: The simplest sort of guide consists only of text labels, like the y-axis in @fig-trade-bars.  Data values are encoded as the shape of text labels just as data values are encoded as the visual features of data symbols. The difference is that absolute values can be decoded from text labels, whereas only relative values can be decoded from data symbols.  A value decoded from the text label is associated with a data symbol, and values decoded from the data symbol, through the proximity of the text label to the data symbol.
 include_graphics("Diagrams/text-guide.svg")
+
+
+## -----------------------------------------------------------------------------
+#| label: fig-trade-bars-annotation
+#| echo: FALSE
+#| fig-keep: last
+#| fig-cap: "A bar plot of international trade between New Zealand and its major partners in 2024 with an annotation indicating New Zealand's largest trading partner in 1924."
+ann <- function(data, coords) {
+    i <- which(data$y == 4)[2]
+    lab <- textGrob("largest trade partner in 1924",
+                    x=.5, y=.2, hjust=0,
+                    gp=gpar(lineheight=.9))
+    curve <- curveGrob(unit(.5, "npc") - unit(1, "mm"), .2, 
+                       unit(coords$x[i], "npc") + unit(1, "mm"),
+                       coords$y[i], inflect=TRUE,
+                       curvature=-1,
+                       arrow=arrow(angle=15, length=unit(2, "mm"), 
+                                   type="closed"),
+                       gp=gpar(fill="black"))
+    grobTree(lab, curve)
+}
+ggAnn <- ggBar() +
+    grid_panel(ann, aes(amount, country)) +
+    coord_cartesian(clip="off")
+grid.rect(gp=gpar(col="grey"))
+pushViewport(viewport(width=unit(1, "npc") - margin,
+                      height=unit(1, "npc") - margin,))
+print(ggAnn, newpage=FALSE)
+grid.force()
+legend <- grid.get("guide-box-right", grep=TRUE)
+
+
+## -----------------------------------------------------------------------------
+#| label: fig-text-guide-annotation
+#| echo: FALSE
+#| out-width: 4.1in
+#| fig.cap: The annotation in @fig-trade-bars-annotation works in a very similar way to the y-axis in @fig-trade-bars.  Information is encoded as the shape of text label and that information can be decoded from the text label.  This information is associated with information from the data symbols, and values decoded from the data symbols, through the *connection* that is created by the line between the text label and the data symbols for the United Kingdom.
+include_graphics("Diagrams/text-guide-annotation.svg")
 
 
 ## -----------------------------------------------------------------------------
@@ -101,7 +148,7 @@ grid.draw(legend)
 ## -----------------------------------------------------------------------------
 #| label: fig-text-geom-guide
 #| echo: FALSE
-#| out-width: 70%
+#| out-width: 6.2in
 #| fig.cap: A guide may contain geometric shapes as well as text labels, for example, the legend in @fig-trade-bars.  Data values are encoded as visual features of geometric shapes in the legend just like they are for data symbols. Values decoded from the shapes in a legend, or from text labels associated with those shapes, are associated with the values decoded from data symbols, through the similarity of the shapes in the legend and the shapes in the data symbols.
 include_graphics("Diagrams/text-geom-guide.svg")
 
@@ -471,4 +518,12 @@ print(ggPenguinLegend, newpage=FALSE)
 grid.force()
 ## Remove legend
 grid.remove("guide-box-right", grep=TRUE)
+
+
+## -----------------------------------------------------------------------------
+#| label: fig-text-standalone
+#| echo: FALSE
+#| out-width: 2.1in
+#| fig.cap: A guide may consist only of text labels and need no association with data symbols, for example, the title in @fig-trade-bars.  In this case, the value of the guide comes directly from being able to decode absolute information (about the data visualisation as a whole) from the text label.
+include_graphics("Diagrams/text-standalone.svg")
 

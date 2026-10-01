@@ -68,15 +68,19 @@ div.csl-indent {
    
   <ul>
   <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link active" data-scroll-target="#introduction-1"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#sec:encodings" id="toc-sec:encodings" class="nav-link" data-scroll-target="#sec\:encodings"><span class="header-section-number">2</span> Guides are encodings too</a></li>
+  <li><a href="#sec:encodings" id="toc-sec:encodings" class="nav-link" data-scroll-target="#sec\:encodings"><span class="header-section-number">2</span> Guides are encodings too</a>
+  <ul class="collapse">
+  <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations">Annotations</a></li>
+  </ul></li>
   <li><a href="#sec:geoms" id="toc-sec:geoms" class="nav-link" data-scroll-target="#sec\:geoms"><span class="header-section-number">3</span> Guides contain geometric shapes too</a>
   <ul class="collapse">
   <li><a href="#improving-a-legend" id="toc-improving-a-legend" class="nav-link" data-scroll-target="#improving-a-legend">Improving a legend</a></li>
   <li><a href="#direct-labelling" id="toc-direct-labelling" class="nav-link" data-scroll-target="#direct-labelling">Direct labelling</a></li>
   <li><a href="#improving-an-x-axis" id="toc-improving-an-x-axis" class="nav-link" data-scroll-target="#improving-an-x-axis">Improving an x-axis</a></li>
-  <li><a href="#improving-a-gradient-colour-legend" id="toc-improving-a-gradient-colour-legend" class="nav-link" data-scroll-target="#improving-a-gradient-colour-legend">Improving a gradient colour legend</a></li>
+  <li><a href="#improving-a-quantitative-colour-legend" id="toc-improving-a-quantitative-colour-legend" class="nav-link" data-scroll-target="#improving-a-quantitative-colour-legend">Improving a quantitative colour legend</a></li>
   </ul></li>
-  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">4</span> Discussion</a>
+  <li><a href="#guides-do-not-necessarily-need-data-symbols" id="toc-guides-do-not-necessarily-need-data-symbols" class="nav-link" data-scroll-target="#guides-do-not-necessarily-need-data-symbols"><span class="header-section-number">4</span> Guides do not necessarily need data symbols</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">5</span> Discussion</a>
   <ul class="collapse">
   <li><a href="#automation" id="toc-automation" class="nav-link" data-scroll-target="#automation">Automation</a></li>
   </ul></li>
@@ -133,19 +137,19 @@ Abstract
 <div class="callout-body-container callout-body">
 <section id="introduction" class="level6">
 <h6 class="anchored" data-anchor-id="introduction">Introduction</h6>
-<p>The research question and a succinct motivation for answering it.</p>
+<p>A data visualisation can be described as an encoding of information into a visual elements—data symbols. The commonly-stated purpose of guides (axes and legends) is to allow us to decode information from the data symbols. However, guides are themselves composed of visual elements. This article aims to answer the question: If guides allow us to decode data symbols, what allows us to decode guides?</p>
 </section>
 <section id="theorymodel" class="level6">
 <h6 class="anchored" data-anchor-id="theorymodel">Theory/model</h6>
-<p><em>For theories or models</em>: A description of the theory or model, its key organizing principle, or new insights that might be gained from it</p>
+<p>We propose that: guides are also encodings of information, just like data symbols; information is decoded separately from both data symbols and from guides; information from data symbols and guides is combined via Gestalt principles such as proximity and similarity.</p>
 </section>
 <section id="conclusion" class="level6">
 <h6 class="anchored" data-anchor-id="conclusion">Conclusion</h6>
-<p>An interpretation of results, lessons learned, etc. in the context of the research question and its implications. <em>Avoid overgeneralizing</em>, and <em>avoid broad behavioral claims without strong evidence.</em></p>
+<p>Given this understanding of how guides work, we can question the design of even the most standard guides, such as axes and legends. This leads to a novel x-axis design for quantitative length encodings and an improved legend design for quantitative colour encodings.</p>
 </section>
 <section id="materials" class="level6">
 <h6 class="anchored" data-anchor-id="materials">Materials</h6>
-<p>Link to repositories containing raw data, open source code or (pre-)registration number/links.</p>
+<p>The source code and data sets for this article are available from <a href="https://github.com/pmur002/jovi-murrell-demystify">GitHub</a>.</p>
 </section>
 </div>
 </div>
@@ -162,10 +166,9 @@ Materials, Authorship, License, Conflicts
 </div>
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
-<p>Fill in the following sections in this infobox per the <a href="https://www.journalovi.org/author-guide.html#sections">JoVI Author Guide</a>, then delete this line.</p>
 <section id="research-materials" class="level6">
 <h6 class="anchored" data-anchor-id="research-materials">Research materials</h6>
-<p>See <a href="https://www.journalovi.org/author-guide.html#research-material-statements">the corresponding section in the author guide</a>.</p>
+<p><strong> TODO Add OSF or FigShare link </strong></p>
 </section>
 <section id="authorship" class="level6">
 <h6 class="anchored" data-anchor-id="authorship">Authorship</h6>
@@ -199,12 +202,25 @@ Figure&nbsp;1: A bar plot of international trade between New Zealand and its maj
 </div>
 </div>
 </div>
-<p>The axes, the legend, and even the title, are collectively known as <em>guides</em> <span class="citation" data-cites="wilkinson2005grammar">(<a href="#ref-wilkinson2005grammar" role="doc-biblioref">Wilkinson 2005</a>)</span> or <em>scaffolding</em> <span class="citation" data-cites="cairo2019howchartslie">(<a href="#ref-cairo2019howchartslie" role="doc-biblioref">Cairo 2019</a>)</span> because they share a common purpose: they explain how data values are encoded within the plot. The guides are there to help us to decode the data symbols.</p>
+<p>The axes, the legend, and even the title, are collectively known as <em>guides</em> <span class="citation" data-cites="wilkinson2005grammar">(<a href="#ref-wilkinson2005grammar" role="doc-biblioref">Wilkinson 2005</a>)</span> because they share a common purpose: they explain how data values are encoded within the plot. The guides are there to help us to decode the data symbols.</p>
 <p>For example, in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, the trade account, imports versus exports, is encoded as the colour of the bar data symbols. However, bars that differ in colour only indicate that there are different groups—salmon is different from turquoise. The legend is necessary to explain <em>which</em> group corresponds to each colour—salmon means imports and turquoise means exports.</p>
-<p><strong> TODO Cite some guidelines that say guides are essential (without going into how they work). Get a juicy quote or two that makes it look like guides are “magically” inverting the encodings of data symbols. </strong></p>
-<p>This description of how guides work in a data visualisation appears sensible, but it is superficial. In particular, it ignores how we decode information from the guides themselves. <strong>If guides allow us to decode data symbols, what allows us to decode guides?</strong></p>
-<p>We have a much deeper understanding of how data symbols work. For example, we know that encoding trade amounts as the lengths of bars will result in an accurate decoding of their relative lengths, particularly when they share a common baseline <span class="citation" data-cites="cleveland1984graphical ware2020information">(<a href="#ref-cleveland1984graphical" role="doc-biblioref">Cleveland and McGill 1984</a>; <a href="#ref-ware2020information" role="doc-biblioref">Ware 2020</a>)</span>. We know <em>why</em> bars are effective data symbols.</p>
-<p>The purpose of this article is to consider how guides work in greater depth. The goal is to form a better understanding of what makes an effective guide. As a result, we hope to encourage a more intentional and reasoned use of guides in data visualisation, and we will discover some ways in which even very standard and established guides might be improved.</p>
+<p>We have an understanding of how data symbols work. For example, we know that encoding trade amounts as the lengths of bars will result in an accurate decoding of their relative lengths, particularly when they share a common baseline <span class="citation" data-cites="cleveland1984graphical heer2010crowdsourcing">(<a href="#ref-cleveland1984graphical" role="doc-biblioref">Cleveland and McGill 1984</a>; <a href="#ref-heer2010crowdsourcing" role="doc-biblioref">Heer and Bostock 2010</a>)</span>. We know <em>why</em> bars are effective data symbols and this helps us to make deliberate choices for encoding information as data symbols.</p>
+<p>However, we lack corresponding explanations for how guides work. The <em>purpose</em> of guides—to allow a data visualisation to be decoded—is often stated <span class="citation" data-cites="heer_scales_axes_legends">(e.g., <a href="#ref-heer_scales_axes_legends" role="doc-biblioref">Heer et al. n.d.</a>)</span>, but the mechanism by which guides achieve their purpose remains a mystery (see <a href="#fig-guide-myth" class="quarto-xref">Figure&nbsp;2</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-guide-myth" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-guide-myth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Diagrams/guide-myth.svg" class="img-fluid figure-img" style="width:4.1in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-guide-myth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>The goal of this article is to consider how guides work in greater depth—to form a better understanding of what makes an effective guide. As a result, we hope to encourage a more intentional and reasoned use of guides in data visualisation. Rather than relying on dogmatic rules of thumb, such as “always label your axes” <span class="citation" data-cites="xkcd833">(<a href="#ref-xkcd833" role="doc-biblioref">Munroe 2010</a>)</span>, we would like to arm ourselves with the means to justify our choice of guides. We will also demonstrate that a deeper understanding of guides makes it possible to question the design of even very standard and established guides.</p>
 </section>
 <section id="sec:encodings" class="level2" data-number="2">
 <h2 data-number="2" class="anchored" data-anchor-id="sec:encodings"><span class="header-section-number">2</span> Guides are encodings too</h2>
@@ -214,23 +230,57 @@ Figure&nbsp;1: A bar plot of international trade between New Zealand and its maj
 <p>Although the y-axis consists of text labels and the bars consist of rectangles, they both result from encoding country names as vertical positions. The bars for China are above the bars for USA and the label for China is above the label for USA.</p>
 <p>Furthermore, just as we can easily decode qualitative differences from the vertical positions of the bars, we can easily decode qualitative differences from the vertical positions of the labels <span class="citation" data-cites="brath2020visualizing">(<a href="#ref-brath2020visualizing" role="doc-biblioref">Brath 2020</a>)</span>. The China bars represent a different group from the USA bars and the China label represents a different group from the USA label.</p>
 <p>One difference between the y-axis and the bars in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is that the y-axis is <em>also</em> the result of encoding country names as the <em>shape</em> of the text labels. The label for China is in a different vertical position than the label for USA <em>and</em> the label for China uses different letters or glyphs than the label for USA. The label shapes mean that, in addition to being able to decode that the labels are different, we can decode the absolute data values themselves: China and USA <span class="citation" data-cites="Murrell_2026">(<a href="#ref-Murrell_2026" role="doc-biblioref">Murrell 2026</a>)</span>.</p>
-<p>In summary, the y-axis is very similar to the bars in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> because the y-axis encodes the same data values as the bars, uses the same encoding as the bars—vertical position—and we can decode the same information from the y-axis as we can from the bars—that there are different qualitative data values. The difference is that the y-axis also encodes the data values as text shape so we can also decode the absolute qualitative data values—the country names—from the text shapes (see <a href="#fig-text-guide" class="quarto-xref">Figure&nbsp;2</a>).</p>
+<p>In summary, the y-axis is very similar to the bars in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> because the y-axis encodes the same data values as the bars, uses the same encoding as the bars—vertical position—and we can decode the same information from the y-axis as we can from the bars—that there are different qualitative data values. The difference is that the y-axis also encodes the data values as text shape so we can also decode the absolute qualitative data values—the country names—from the text shapes (see <a href="#fig-text-guide" class="quarto-xref">Figure&nbsp;3</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-text-guide" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-text-guide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Diagrams/text-guide.svg" class="img-fluid figure-img">
+<img src="Diagrams/text-guide.svg" class="img-fluid figure-img" style="width:4.1in">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-text-guide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: The simplest sort of guide consists only of text labels, like the y-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>. Data values are encoded as the shape of text labels just as data values are encoded as the visual features of data symbols. The difference is that absolute values can be decoded from text labels, whereas only relative values can be decoded from data symbols. A value decoded from the text label is associated with a data symbol, and values decoded from the data symbol, through the proximity of the text label to the data symbol.
+Figure&nbsp;3: The simplest sort of guide consists only of text labels, like the y-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>. Data values are encoded as the shape of text labels just as data values are encoded as the visual features of data symbols. The difference is that absolute values can be decoded from text labels, whereas only relative values can be decoded from data symbols. A value decoded from the text label is associated with a data symbol, and values decoded from the data symbol, through the proximity of the text label to the data symbol.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>In this sense, the y-axis guide is just like the bar data symbols because they both result from encoding data values as visual features and we decode information from those visual features. On their own, the bars and the y-axis work in very similar ways.</p>
-<p>The final piece of the puzzle—how the y-axis is used to explain the bars—depends on the fact that the y-axis text labels are placed right next to the corresponding data symbol bars <span class="citation" data-cites="wagemans2012gestalt">(<a href="#ref-wagemans2012gestalt" role="doc-biblioref">Wagemans et al. 2012</a>)</span>. This proximity means that we can associate the information that we decode from the text labels—the country names—with the associated bars (see <a href="#fig-text-guide" class="quarto-xref">Figure&nbsp;2</a>).</p>
+<p>The final piece of the puzzle—how the y-axis is used to explain the bars—depends on the fact that the y-axis text labels are placed right next to the corresponding data symbol bars <span class="citation" data-cites="wagemans2012gestalt">(<a href="#ref-wagemans2012gestalt" role="doc-biblioref">Wagemans et al. 2012</a>)</span>. This proximity means that we can associate the information that we decode from the text labels—the country names—with the associated bars (see <a href="#fig-text-guide" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<section id="annotations" class="level3">
+<h3 class="anchored" data-anchor-id="annotations">Annotations</h3>
+<p><a href="#fig-trade-bars-annotation" class="quarto-xref">Figure&nbsp;4</a> shows a variation on <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, with an <em>annotation</em> added. This is another sort of guide that consists of a label to describe a point of interest. In this case, the point is that the United Kingdom, New Zealand’s largest trade partner a century ago, is a much smaller partner (in relative terms) in the present day.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-trade-bars-annotation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trade-bars-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-trade-bars-annotation-1.svg" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trade-bars-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: A bar plot of international trade between New Zealand and its major partners in 2024 with an annotation indicating New Zealand’s largest trading partner in 1924.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We can explain the effectiveness of the annotation in <a href="#fig-trade-bars-annotation" class="quarto-xref">Figure&nbsp;4</a> using the same approach that we used to explain the y-axis.</p>
+<p>The annotation label is an encoding of information as the shape of text and we can decode absolute information from that text. This information is associated with the United Kingdom not by proximity, but by <em>connection</em>; there is a line drawn between the position of the annotation label and the position of the data symbols for the United Kingdom (see <a href="#fig-text-guide-annotation" class="quarto-xref">Figure&nbsp;5</a>).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-text-guide-annotation" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-text-guide-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Diagrams/text-guide-annotation.svg" class="img-fluid figure-img" style="width:4.1in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-text-guide-annotation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: The annotation in <a href="#fig-trade-bars-annotation" class="quarto-xref">Figure&nbsp;4</a> works in a very similar way to the y-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>. Information is encoded as the shape of text label and that information can be decoded from the text label. This information is associated with information from the data symbols, and values decoded from the data symbols, through the <em>connection</em> that is created by the line between the text label and the data symbols for the United Kingdom.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="sec:geoms" class="level2" data-number="3">
 <h2 data-number="3" class="anchored" data-anchor-id="sec:geoms"><span class="header-section-number">3</span> Guides contain geometric shapes too</h2>
@@ -249,16 +299,16 @@ Figure&nbsp;2: The simplest sort of guide consists only of text labels, like the
 <p>That description of the legend sounds a lot like the description of the bar data symbols and the y-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> because the legend, in isolation, works the same way. There are text labels that tell us which group each bar (and each colour) corresponds to.</p>
 <p>So one point we can make is that the legend is a mini data visualisation all by itself. It consists not only of text labels, but also geometric shapes (rectangles) just like data symbols. A second point is that a guide can consist just of text labels, like the y-axis, or it can consist of text labels plus geometric shapes, like the legend.</p>
 <p>Of course, the legend is not intended to be used in isolation. We need to associate the information from the legend with the bar data symbols. The information that we decode from the legend can be applied to the bar data symbols through the similarity of the colours; the bar data symbols for Exports are the same colour as the rectangles for Exports in the legend <span class="citation" data-cites="wagemans2012gestalt">(<a href="#ref-wagemans2012gestalt" role="doc-biblioref">Wagemans et al. 2012</a>)</span>.</p>
-<p>In other words, the legend works by associating text labels with geometric shapes in the legend (by proximity) and then associating the geometric shapes in the legend with geometric shapes in the plot (by similarity; see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<p>In other words, the legend works by associating text labels with geometric shapes in the legend (by proximity) and then associating the geometric shapes in the legend with geometric shapes in the plot (by similarity; see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;6</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-text-geom-guide" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-text-geom-guide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="Diagrams/text-geom-guide.svg" class="img-fluid figure-img" style="width:70.0%">
+<img src="Diagrams/text-geom-guide.svg" class="img-fluid figure-img" style="width:6.2in">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-text-geom-guide-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: A guide may contain geometric shapes as well as text labels, for example, the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>. Data values are encoded as visual features of geometric shapes in the legend just like they are for data symbols. Values decoded from the shapes in a legend, or from text labels associated with those shapes, are associated with the values decoded from data symbols, through the similarity of the shapes in the legend and the shapes in the data symbols.
+Figure&nbsp;6: A guide may contain geometric shapes as well as text labels, for example, the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>. Data values are encoded as visual features of geometric shapes in the legend just like they are for data symbols. Values decoded from the shapes in a legend, or from text labels associated with those shapes, are associated with the values decoded from data symbols, through the similarity of the shapes in the legend and the shapes in the data symbols.
 </figcaption>
 </figure>
 </div>
@@ -271,7 +321,7 @@ Figure&nbsp;3: A guide may contain geometric shapes as well as text labels, for 
 <p>On one hand, this is an unsurprising result. The purpose of a guide is to explain or demonstrate the encoding of data symbols, so the encoding of geometric shapes in the guide should match the encoding of geometric shapes in the data symbols. This is what the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> does: the encoding of rectangle colour in the legend matches the encoding of rectangle colour in the data symbols.</p>
 <p>However, a more strict interpretation says that there should be encodings within a guide that match the encodings used for data symbols <em>and there should be no other encodings</em>. Furthermore, a strict interpretation of “no other encodings” includes implicit or unintentional encodings—visual differences that are noticeable even though they have no explicit connection to differences in the data <span class="citation" data-cites="wolfe-horowitz">(<a href="#ref-wolfe-horowitz" role="doc-biblioref">Wolfe and Horowitz 2017</a>)</span>.</p>
 <p>Given this strict interpretation, the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is deficient because, although the rectangles in the legend encode colour in the same way as the rectangles for the bar data symbols, the rectangles in the legend differ from the bar rectangles in the several visually-significant ways.</p>
-<p><a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;4</a> shows a variation of <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> with a legend that attempts to satisfy the strict interpretation. The rectangles in the legend are now the same height as the bar rectangles, the rectangles in the legend start at the same horizontal position as the bar rectangles, there is no vertical separation between the rectangles in the legend (just like the bar rectangles), and the rectangles in the legend are in the same vertical order as the bar rectangles (with exports on top). The comparison between the geometric shapes of the data symbols and geometric shapes in the guide is now a case of like versus like. The encodings in the legend match the encodings in the data symbols and there are no other visual differences between the geometric shapes in the legend and the geometric shapes of the data symbols. The legend in <a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;4</a> may not provide a very large improvement over the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but it does demonstrate how we can apply a deeper understanding of how guides work.</p>
+<p><a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;7</a> shows a variation of <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> with a legend that attempts to satisfy the strict interpretation. The rectangles in the legend are now the same height as the bar rectangles, the rectangles in the legend start at the same horizontal position as the bar rectangles, there is no vertical separation between the rectangles in the legend (just like the bar rectangles), and the rectangles in the legend are in the same vertical order as the bar rectangles (with exports on top). The comparison between the geometric shapes of the data symbols and geometric shapes in the guide is now a case of like versus like. The encodings in the legend match the encodings in the data symbols and there are no other visual differences between the geometric shapes in the legend and the geometric shapes of the data symbols. The legend in <a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;7</a> may not provide a very large improvement over the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but it does demonstrate how we can apply a deeper understanding of how guides work.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-trade-bars-legend" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -280,7 +330,7 @@ Figure&nbsp;3: A guide may contain geometric shapes as well as text labels, for 
 <img src="index_files/figure-html/fig-trade-bars-legend-1.svg" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trade-bars-legend-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;4: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but with a non-standard legend. The geometric shapes in this legend match the geometric shapes of the data symbols much more closely.
+Figure&nbsp;7: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but with a non-standard legend. The geometric shapes in this legend match the geometric shapes of the data symbols much more closely.
 </figcaption>
 </figure>
 </div>
@@ -289,10 +339,10 @@ Figure&nbsp;4: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">F
 </section>
 <section id="direct-labelling" class="level3">
 <h3 class="anchored" data-anchor-id="direct-labelling">Direct labelling</h3>
-<p>In the previous section we established that a legend works by associating text labels with geometric shapes and then by associating geometric shapes in the legend with the geometric shapes of the data symbols. In other words, a legend works in two steps: the first step just uses the proximity of text labels to geometric shapes; and the second step uses the similarity of geometric shapes (see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;3</a>).</p>
-<p><a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;4</a> was an attempt to improve <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> by optimising the second step—by optimising the similarity of the geometric shapes that are used in the legend and for the data symbols. An alternative approach to improving <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is to just remove the second step altogether.</p>
-<p><a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;5</a> moves the text labels from the legend to positions beside the top two bars. The trade account is encoded as the vertical position of the text labels (for one country, China) and as the shape of the text labels. These two labels act as a guide for the encoding of trade account that works in a similar way to the y-axis labels. We can decode the exact data values for trade account from the labels and rely on the encoding of vertical position of the labels, plus Gestalt proximity, to group a bar with its corresponding label. There is no longer any need to compare a geometric shape in the guide with the geometric shapes of the data symbols <span class="citation" data-cites="carpenter1998model">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>)</span>. This approach is sometimes called <em>direct labelling</em> <span class="citation" data-cites="tufte2006beautiful">(<a href="#ref-tufte2006beautiful" role="doc-biblioref">Tufte 2006</a>)</span>.</p>
-<p>In <a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;5</a>, we have also encoded the trade account as the colour of the text labels. This further reinforces the association between the text labels and the relevant bars for China, plus it visually groups the labels with bars of similar colour across the whole plot.</p>
+<p>In the previous section we established that a legend works by associating text labels with geometric shapes and then by associating geometric shapes in the legend with the geometric shapes of the data symbols. In other words, a legend works in two steps: the first step just uses the proximity of text labels to geometric shapes; and the second step uses the similarity of geometric shapes (see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;6</a>).</p>
+<p><a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;7</a> was an attempt to improve <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> by optimising the second step—by optimising the similarity of the geometric shapes that are used in the legend and for the data symbols. An alternative approach to improving <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is to just remove the second step altogether.</p>
+<p><a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;8</a> moves the text labels from the legend to positions beside the top two bars. The trade account is encoded as the vertical position of the text labels (for one country, China) and as the shape of the text labels. These two labels act as a guide for the encoding of trade account that works in a similar way to the y-axis labels. We can decode the exact data values for trade account from the labels and rely on the encoding of vertical position of the labels, plus Gestalt proximity, to group a bar with its corresponding label. There is no longer any need to compare a geometric shape in the guide with the geometric shapes of the data symbols <span class="citation" data-cites="carpenter1998model">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>)</span>. This approach is sometimes called <em>direct labelling</em> <span class="citation" data-cites="tufte2006beautiful">(<a href="#ref-tufte2006beautiful" role="doc-biblioref">Tufte 2006</a>)</span>.</p>
+<p>In <a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;8</a>, we have also encoded the trade account as the colour of the text labels. This further reinforces the association between the text labels and the relevant bars for China, plus it visually groups the labels with bars of similar colour across the whole plot.</p>
 <p>It is worth noting that, according to this breakdown, the y-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is itself a form of direct labelling.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -302,7 +352,7 @@ Figure&nbsp;4: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">F
 <img src="index_files/figure-html/fig-trade-bars-direct-1.svg" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trade-bars-direct-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but instead of a legend, direct labelling is used to explain the encoding of trade account by placing text labels adjacent to the associated data symbols (proximity), plus colour to associate with other data symbols (similarity).
+Figure&nbsp;8: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but instead of a legend, direct labelling is used to explain the encoding of trade account by placing text labels adjacent to the associated data symbols (proximity), plus colour to associate with other data symbols (similarity).
 </figcaption>
 </figure>
 </div>
@@ -314,9 +364,9 @@ Figure&nbsp;5: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">F
 <p>We now move on to the x-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>. On one hand, the x-axis can be analysed in a similar fashion to the y-axis. The bar data symbols are a result of encoding trade amounts as horizontal bar lengths and the x-axis is a result of encoding trade amounts as the horizontal position of text labels. In addition, trade amounts are encoded as the shape of the text labels on the x-axis.</p>
 <p>We can decode quantitative differences from the bar lengths. We can easily see that some bars are longer than others and we can also decode the ratios of bar lengths, for example, the China export bar is roughly twice the length of the USA export bar. We can decode similar quantitative information from the positions of the text labels. In fact, ratios are even easier to decode because of the regular spacing of the text labels. Finally, we can decode actual trade amounts from the shapes of the text labels.</p>
 <p>However, there are several differences between the y-axis and the x-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>. Whereas both axes contain text labels, the x-axis also consists of vertical grid lines. In this sense, the x-axis is similar to the legend because it contains both text labels and geometric shapes.</p>
-<p>We can associate the trade amounts from the x-axis labels with the grid lines due to their proximity to each other (just as we associate labels with rectangles in the legend) and we can compare the bar lengths to the grid lines to associate bar length differences and ratios with actual trade amounts. The latter step is similar to the second step in how a legend works because it involves comparing geometric shapes, even if in this case it is comparing lengths for differences rather than comparing colours for similarity as in the legend (see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<p>We can associate the trade amounts from the x-axis labels with the grid lines due to their proximity to each other (just as we associate labels with rectangles in the legend) and we can compare the bar lengths to the grid lines to associate bar length differences and ratios with actual trade amounts. The latter step is similar to the second step in how a legend works because it involves comparing geometric shapes, even if in this case it is comparing lengths for differences rather than comparing colours for similarity as in the legend (see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;6</a>).</p>
 <p>The main point is that the x-axis works in two steps, like the legend, which means that we can apply the same idea to modify the x-axis: make the geometric shapes in the x-axis as similar as possible to the geometric shapes used for the data symbols, except for the encoded differences.</p>
-<p><a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;6</a> implements that approach for the bar plot in <a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;5</a>. In <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;6</a>, the x-axis consists of the same labels as before, but the geometric shapes on the x-axis are now rectangles. Now, the encoding of the geometric shapes in the guide (length of rectangles) matches the encoding of the geometric shapes used for the data symbols (also length of rectangles). Furthermore, in addition to the obvious choice of aligning the left edge of the rectangles in the guide with the left edge of the rectangle data symbols, we have set the heights of the rectangles in the guide to be the same as the heights of the rectangle data symbols. In summary, we are now able to compare the lengths of bar data symbols with the lengths of bars in the x-axis, rather than comparing the lengths of bar data symbols with the positions of grid lines in the x-axis.</p>
+<p><a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;9</a> implements that approach for the bar plot in <a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;8</a>. In <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;9</a>, the x-axis consists of the same labels as before, but the geometric shapes on the x-axis are now rectangles. Now, the encoding of the geometric shapes in the guide (length of rectangles) matches the encoding of the geometric shapes used for the data symbols (also length of rectangles). Furthermore, in addition to the obvious choice of aligning the left edge of the rectangles in the guide with the left edge of the rectangle data symbols, we have set the heights of the rectangles in the guide to be the same as the heights of the rectangle data symbols. In summary, we are now able to compare the lengths of bar data symbols with the lengths of bars in the x-axis, rather than comparing the lengths of bar data symbols with the positions of grid lines in the x-axis.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-trade-bars-x-axis" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -325,14 +375,14 @@ Figure&nbsp;5: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">F
 <img src="index_files/figure-html/fig-trade-bars-x-axis-1.svg" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trade-bars-x-axis-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;6: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but with a non-standard x-axis that explains the encoding of trade amount using the lengths of bars. The geometric shapes in this axis provide a better match of the encoding used for the data symbols.
+Figure&nbsp;9: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but with a non-standard x-axis that explains the encoding of trade amount using the lengths of bars. The geometric shapes in this axis provide a better match of the encoding used for the data symbols.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>One problem with <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;6</a> is that it is more difficult to compare the rectangles for the data symbols with the rectangles in the x-axis thanks to the vertical distance between the rectangles <span class="citation" data-cites="lu2021modeling talbot2014four">(<a href="#ref-lu2021modeling" role="doc-biblioref">Lu et al. 2021</a>; <a href="#ref-talbot2014four" role="doc-biblioref">Talbot, Setlur, and Anand 2014</a>)</span>.</p>
-<p><a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;7</a> applies a further modification, abandoning the traditional position of the x-axis at the bottom of the plot and placing the guide rectangles amongst the ordered rectangles used for the data symbols.</p>
+<p>One problem with <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;9</a> is that it is more difficult to compare the rectangles for the data symbols with the rectangles in the x-axis thanks to the vertical distance between the rectangles <span class="citation" data-cites="lu2021modeling talbot2014four">(<a href="#ref-lu2021modeling" role="doc-biblioref">Lu et al. 2021</a>; <a href="#ref-talbot2014four" role="doc-biblioref">Talbot, Setlur, and Anand 2014</a>)</span>.</p>
+<p><a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;10</a> applies a further modification, abandoning the traditional position of the x-axis at the bottom of the plot and placing the guide rectangles amongst the ordered rectangles used for the data symbols.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-trade-bars-x-axis-embedded" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -341,17 +391,17 @@ Figure&nbsp;6: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">F
 <img src="index_files/figure-html/fig-trade-bars-x-axis-embedded-1.svg" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trade-bars-x-axis-embedded-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;7: The bar plot from <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;6</a>, but with the x-axis is embedded alongside the data symbols to make length comparisons easier and more accurate.
+Figure&nbsp;10: The bar plot from <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;9</a>, but with the x-axis is embedded alongside the data symbols to make length comparisons easier and more accurate.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>In <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;7</a>, compared to <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, our analysis of how guides work has essentially lead us to replace the original legend with a second y-axis and to replace the original x-axis with a new (embedded) legend. Again, it is difficult to claim that <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;7</a> is in all ways superior to <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;7</a> does demonstrate that a deeper understanding of how guides work can lead us to consider some novel approaches to generating guides.</p>
-<p>Another reason why the standard x-axis works in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is because viewers are very used to seeing a guide like this on a data visualisation <span class="citation" data-cites="tsai2026pictorial">(<a href="#ref-tsai2026pictorial" role="doc-biblioref">Tsai, Hahn, and Siegler 2026</a>)</span>. <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;7</a> is at a disadvantage in this regard because viewers are not used to seeing an embedded x-axis.</p>
-<p>Before we leave the x-axis, we must acknowledge the alternative approach that we used to improve the legend in <a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;5</a>: instead of attempting to improve the second step, we can just remove the second step by using direct labelling.</p>
-<p><a href="#fig-trade-bars-x-axis-direct" class="quarto-xref">Figure&nbsp;8</a> shows a version of our bar plot with all trade amounts encoded as text labels directly beside each bar. Although we are now able to decode trade amounts from the shape of text labels and associate those trade amounts with bars simply by the proximity of the text labels to the bars, the large number of text labels makes it more difficult to compare the bars themselves.</p>
-<p><a href="#fig-trade-bars-x-axis-direct" class="quarto-xref">Figure&nbsp;8</a> demonstrates that direct labelling is not always a good option, essentially due to the clutter that it creates <span class="citation" data-cites="show-or-tell ajani2021declutter">(<a href="#ref-show-or-tell" role="doc-biblioref">Hearst 2023</a>; <a href="#ref-ajani2021declutter" role="doc-biblioref">Ajani et al. 2022</a>)</span>.</p>
+<p>In <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;10</a>, compared to <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, our analysis of how guides work has essentially lead us to replace the original legend with a second y-axis and to replace the original x-axis with a new (embedded) legend. Again, it is difficult to claim that <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;10</a> is in all ways superior to <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;10</a> does demonstrate that a deeper understanding of how guides work can lead us to consider some novel approaches to generating guides.</p>
+<p>Another reason why the standard x-axis works in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is because viewers are very used to seeing a guide like this on a data visualisation <span class="citation" data-cites="tsai2026pictorial">(<a href="#ref-tsai2026pictorial" role="doc-biblioref">Tsai, Hahn, and Siegler 2026</a>)</span>. <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;10</a> is at a disadvantage in this regard because viewers are not used to seeing an embedded x-axis.</p>
+<p>Before we leave the x-axis, we must acknowledge the alternative approach that we used to improve the legend in <a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;8</a>: instead of attempting to improve the second step, we can just remove the second step by using direct labelling.</p>
+<p><a href="#fig-trade-bars-x-axis-direct" class="quarto-xref">Figure&nbsp;11</a> shows a version of our bar plot with all trade amounts encoded as text labels directly beside each bar. Although we are now able to decode trade amounts from the shape of text labels and associate those trade amounts with bars simply by the proximity of the text labels to the bars, the large number of text labels makes it more difficult to compare the bars themselves.</p>
+<p><a href="#fig-trade-bars-x-axis-direct" class="quarto-xref">Figure&nbsp;11</a> demonstrates that direct labelling is not always a good option, essentially due to the clutter that it creates <span class="citation" data-cites="show-or-tell ajani2021declutter">(<a href="#ref-show-or-tell" role="doc-biblioref">Hearst 2023</a>; <a href="#ref-ajani2021declutter" role="doc-biblioref">Ajani et al. 2022</a>)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-trade-bars-x-axis-direct" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -360,16 +410,16 @@ Figure&nbsp;7: The bar plot from <a href="#fig-trade-bars-x-axis" class="quarto-
 <img src="index_files/figure-html/fig-trade-bars-x-axis-direct-1.svg" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trade-bars-x-axis-direct-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;8: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but instead of an x-axis, direct labelling explains the encoding of trade amounts by placing labels adjacent to the associated data symbols (proximity).
+Figure&nbsp;11: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but instead of an x-axis, direct labelling explains the encoding of trade amounts by placing labels adjacent to the associated data symbols (proximity).
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
 </section>
-<section id="improving-a-gradient-colour-legend" class="level3">
-<h3 class="anchored" data-anchor-id="improving-a-gradient-colour-legend">Improving a gradient colour legend</h3>
-<p>We now turn to a new example in order to demonstrate another common type of guide. <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;9</a> shows a correlation matrix for variables measured on Penguins in the Palmer Archipelago, Antarctica (the Palmer Penguins data set). Correlations are either Pearson’s <em>r</em> (for pairs of quantitative variables) or canonical correlation <span class="citation" data-cites="chinwan2025tidydatastructurevisualisations">(if either variable is qualitative, <a href="#ref-chinwan2025tidydatastructurevisualisations" role="doc-biblioref">Chinwan and Hurley 2025</a>)</span>.</p>
+<section id="improving-a-quantitative-colour-legend" class="level3">
+<h3 class="anchored" data-anchor-id="improving-a-quantitative-colour-legend">Improving a quantitative colour legend</h3>
+<p>We now turn to a new example in order to demonstrate another common type of guide. <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;12</a> shows a correlation matrix for variables measured on Penguins in the Palmer Archipelago, Antarctica (the Palmer Penguins data set). Correlations are either Pearson’s <em>r</em> (for pairs of quantitative variables) or canonical correlation <span class="citation" data-cites="chinwan2025tidydatastructurevisualisations">(if either variable is qualitative, <a href="#ref-chinwan2025tidydatastructurevisualisations" role="doc-biblioref">Chinwan and Hurley 2025</a>)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-corr-mats-penguin" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -378,19 +428,20 @@ Figure&nbsp;8: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">F
 <img src="index_files/figure-html/fig-corr-mats-penguin-1.svg" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corr-mats-penguin-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: Correlations between variables that record physical dimensions, sex, and location of the Palmer Penguins.
+Figure&nbsp;12: Correlations between variables that record physical dimensions, sex, and location of the Palmer Penguins.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>The legend in <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;9</a> explains that the correlation between variables is encoded as the colour of each circle data symbol. More specifically, the sign of the correlation is encoded as the hue and the magnitude of the correlation is encoded as the luminance/chroma. We can see that positive correlations are a shade of red, with higher correlations a darker and more saturated red, and negative correlations are a shade of blue.</p>
+<p>The legend in <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;12</a> explains that the correlation between variables is encoded as the colour of each circle data symbol. More specifically, the sign of the correlation is encoded as the hue and the magnitude of the correlation is encoded as the luminance/chroma. We can see that positive correlations are a shade of red, with higher correlations a darker and more saturated red, and negative correlations are a shade of blue.</p>
 <p>This sort of legend is a common way to explain an encoding of <em>quantitative</em> values, in this case correlation, using colour. By contrast, the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is the usual way to explain an encoding of <em>qualitative</em> values using colour.</p>
-<p>As with the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, we can think of the legend in <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;9</a> as encoding the same information that is encoded in the data symbols, in this case strength and direction of correlation. Furthermore, the effectiveness of the legend comes down to comparisons between the geometric shapes in the legend and the geometric shapes in the data symbols (see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;3</a>).</p>
-<p>However, in the legend in <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;9</a>, there is a much more obvious difference between the geometric shapes in the legend and the geometric shapes in the data symbols.</p>
+<p>As with the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, we can think of the legend in <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;12</a> as encoding the same information that is encoded in the data symbols, in this case strength and direction of correlation. Furthermore, the effectiveness of the legend comes down to comparisons between the geometric shapes in the legend and the geometric shapes in the data symbols (see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;6</a>).</p>
+<p>However, in the legend in <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;12</a>, there is a much more obvious difference between the geometric shapes in the legend and the geometric shapes in the data symbols.</p>
 <p>The geometric shapes in the legend make up a horizontal colour gradient—we can think of the colour gradient as a set of very thin horizontal lines, each with a slightly different colour. These are very different to the circle shapes that are filled with different colours in the data symbols.</p>
-<p>An additional issue in the case of <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;9</a> is the fact that colour perception is sensitive both to neighbouring colours and the size of the coloured region. The data symbol circles are relatively large regions of colour, but the horizontal lines in the legend are much smaller (very narrow) regions of colour, plus they all have another, very similar colour directly adjacent to them. This makes precise matching of colours more difficult <span class="citation" data-cites="10.1109/MCG.2012.37 ware2020information">(<a href="#ref-10.1109/MCG.2012.37" role="doc-biblioref">Stone 2012</a>; <a href="#ref-ware2020information" role="doc-biblioref">Ware 2020</a>)</span>.</p>
-<p><a href="#fig-corr-mats-penguin-geom" class="quarto-xref">Figure&nbsp;10</a> demonstrates an alternative legend that makes use of geometric shapes that match the data symbols. In <a href="#fig-corr-mats-penguin-geom" class="quarto-xref">Figure&nbsp;10</a>, the crucial step of comparing the visual features (colour) of geometric shapes in the legend to the visual features of geometric shapes in the data symbols is more effective, compared to <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;9</a>, because the geometric shapes in the legend and in the data symbols are the same size and shape and, in both cases, the circles are surrounded by a white background.</p>
+<p>An additional issue in the case of <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;12</a> is the fact that colour perception is sensitive both to neighbouring colours and the size of the coloured region. The data symbol circles are relatively large regions of colour, but the horizontal lines in the legend are much smaller (very narrow) regions of colour, plus they all have another, very similar colour directly adjacent to them. This makes precise matching of colours more difficult <span class="citation" data-cites="10.1109/MCG.2012.37 ware2020information">(<a href="#ref-10.1109/MCG.2012.37" role="doc-biblioref">Stone 2012</a>; <a href="#ref-ware2020information" role="doc-biblioref">Ware 2020</a>)</span>.</p>
+<p><a href="#fig-corr-mats-penguin-geom" class="quarto-xref">Figure&nbsp;13</a> demonstrates an alternative legend that makes use of geometric shapes that match the data symbols. In <a href="#fig-corr-mats-penguin-geom" class="quarto-xref">Figure&nbsp;13</a>, the crucial step of comparing the visual features (colour) of geometric shapes in the legend to the visual features of geometric shapes in the data symbols is more effective, compared to <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;12</a>, because the geometric shapes in the legend and in the data symbols are the same size and shape and, in both cases, the circles are surrounded by a white background.</p>
+<p><strong> TODO Note the analogy of in improved color legend with x axis Quantitative guide presents examples of data values nor all possible data values </strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-corr-mats-penguin-geom" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -399,7 +450,7 @@ Figure&nbsp;9: Correlations between variables that record physical dimensions, s
 <img src="index_files/figure-html/fig-corr-mats-penguin-geom-1.svg" class="img-fluid figure-img" width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-corr-mats-penguin-geom-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;10: The correlation matrix from <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;9</a>, but a novel legend explains the encoding of correlation using circles that match the data symbols.
+Figure&nbsp;13: The correlation matrix from <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;12</a>, but a novel legend explains the encoding of correlation using circles that match the data symbols.
 </figcaption>
 </figure>
 </div>
@@ -407,12 +458,37 @@ Figure&nbsp;10: The correlation matrix from <a href="#fig-corr-mats-penguin" cla
 </div>
 </section>
 </section>
-<section id="discussion" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="discussion"><span class="header-section-number">4</span> Discussion</h2>
-<p>We have developed a framework that views guides as encodings of information, just like data symbols are encodings of information, and that views guides as visual components that we decode information, just like we decode information from data symbols. This framework allows us to think more clearly about how a guide contributes to the effectiveness of a data visualisation. Armed with this knowledge, we are able to be more deliberate in our choice of guides and we are able to more effectively critique a guide that is chosen for us. We have also seen several demonstrations that a deeper understanding of guides can lead to the creation of novel and more effective guides.</p>
+<section id="guides-do-not-necessarily-need-data-symbols" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="guides-do-not-necessarily-need-data-symbols"><span class="header-section-number">4</span> Guides do not necessarily need data symbols</h2>
+<p><strong> TODO Discussion of importance of text - need to talk about the title! </strong></p>
+<p><strong> TODO Don’t forget Wilkinson’s “the <em>label()</em> attribute can serve as a guide”. “guide to guides” comment about labels on guides. [p347-348 2nd Edition] </strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-text-standalone" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-text-standalone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="Diagrams/text-standalone.svg" class="img-fluid figure-img" style="width:2.1in">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-text-standalone-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;14: A guide may consist only of text labels and need no association with data symbols, for example, the title in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>. In this case, the value of the guide comes directly from being able to decode absolute information (about the data visualisation as a whole) from the text label.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="discussion" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="discussion"><span class="header-section-number">5</span> Discussion</h2>
+<p><strong> TODO Add explicit list of “discoveries” </strong></p>
+<p>We have taken the view that guides are encodings of information, just like data symbols are encodings of information. Furthermore, guides are visual elements that we decode information from, just like we decode information from data symbols.</p>
+<p>The main difference between guides and data symbols is that guides encode information as text labels whereas data symbols encode information as geometric shapes (though some guides also encode information as geometric shapes).</p>
+<p>Information from guides is associated with information from data symbols via Gestalt processes like proximity, connection, and similarity.</p>
+<p><strong> TODO Some guides are standalone (requiring no association with data symbols) e.g., titles </strong></p>
+<p>In summary, a guide is an encoding of information as a text label. Many guides also employ Gestalt principles to associate the text label with corresponding data symbols.</p>
+<p>This approach allows us to think more clearly about how a guide contributes to the effectiveness of a data visualisation. Armed with this knowledge, we are able to be more deliberate in our choice of guides and we are able to more effectively critique a guide that is chosen for us. We have also seen several demonstrations that a deeper understanding of guides can lead to the creation of novel and more effective guides.</p>
 <section id="automation" class="level3">
 <h3 class="anchored" data-anchor-id="automation">Automation</h3>
-<p>It is one thing to <em>conceive</em> of a slightly unusual guide (<a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;4</a>) or an entirely novel guide (<a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;7</a>), but there remains the problem of actually <em>creating</em> guides outside the norm. Most data visualisations are generated by software systems that, conveniently, automate the production of guides. Although some customisation of those default guides may be possible, we are usually limited to a fixed set of predefined guides that have a predefined format.</p>
+<p>It is one thing to <em>conceive</em> of a slightly unusual guide (<a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;7</a>) or an entirely novel guide (<a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;10</a>), but there remains the problem of actually <em>creating</em> guides outside the norm. Most data visualisations are generated by software systems that, conveniently, automate the production of guides. Although some customisation of those default guides may be possible, we are usually limited to a fixed set of predefined guides that have a predefined format.</p>
 <p>The examples in this article were generated using lower-level statistical graphics tools and consequently required more time and effort. It is not clear whether that additional effort can always be justified, so developing a sufficiently general automated system is an area for future research.</p>
 </section>
 </section>
@@ -433,9 +509,6 @@ Bertin, Jacques. 1983. <em>Semiology of Graphics: Diagrams, Networks, Maps</em>.
 <div id="ref-brath2020visualizing" class="csl-entry" role="listitem">
 Brath, Richard. 2020. <em>Visualizing with Text</em>. AK Peters Visualization Series. Boca Raton, Florida: CRC Press.
 </div>
-<div id="ref-cairo2019howchartslie" class="csl-entry" role="listitem">
-Cairo, Alberto. 2019. <em>How Charts Lie: Getting Smarter about Visual Information</em>. First. New York: W.&nbsp;W. Norton &amp; Company.
-</div>
 <div id="ref-carpenter1998model" class="csl-entry" role="listitem">
 Carpenter, Patricia A., and Priti Shah. 1998. <span>“A Model of the Perceptual and Conceptual Processes in Graph Comprehension.”</span> <em>Journal of Experimental Psychology: Applied</em> 4 (2): 75–100.
 </div>
@@ -448,8 +521,17 @@ Cleveland, William S., and Robert McGill. 1984. <span>“Graphical Perception: T
 <div id="ref-show-or-tell" class="csl-entry" role="listitem">
 Hearst, Marti A. 2023. <span>“Show It or Tell It? <span>Text</span>, Visualization, and Their Combination.”</span> <em>Commun. ACM</em> 66 (10): 6875. <a href="https://doi.org/10.1145/3593580">https://doi.org/10.1145/3593580</a>.
 </div>
+<div id="ref-heer2010crowdsourcing" class="csl-entry" role="listitem">
+Heer, Jeffrey, and Michael Bostock. 2010. <span>“Crowdsourcing Graphical Perception: Using Mechanical Turk to Assess Visualization Design.”</span> In <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>, 203–12. ACM.
+</div>
+<div id="ref-heer_scales_axes_legends" class="csl-entry" role="listitem">
+Heer, Jeffrey, Dominik Moritz, Jake VanderPlas, and Brock Craft. n.d. <span>“Scales, Axes, and Legends.”</span> <a href="https://idl.uw.edu/visualization-curriculum/altair-scales-axes-legends/">https://idl.uw.edu/visualization-curriculum/altair-scales-axes-legends/</a>.
+</div>
 <div id="ref-lu2021modeling" class="csl-entry" role="listitem">
 Lu, Min, Joel Lanir, Chufeng Wang, Yucong Yao, Wen Zhang, Oliver Deussen, and Hui Huang. 2021. <span>“Modeling Just Noticeable Differences in Charts.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 28 (1). <a href="https://doi.org/10.1109/TVCG.2021.3114874">https://doi.org/10.1109/TVCG.2021.3114874</a>.
+</div>
+<div id="ref-xkcd833" class="csl-entry" role="listitem">
+Munroe, Randall. 2010. <span>“Convincing.”</span> <a href="https://xkcd.com/833/" class="uri">https://xkcd.com/833/</a>.
 </div>
 <div id="ref-munzner2014visualization" class="csl-entry" role="listitem">
 Munzner, Tamara. 2014. <em>Visualization Analysis and Design</em>. AK Peters Visualization Series. Boca Raton, FL: CRC Press. <a href="https://doi.org/10.1201/b17511">https://doi.org/10.1201/b17511</a>.
