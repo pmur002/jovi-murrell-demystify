@@ -12,6 +12,9 @@ locations <- data.frame(name=character(),
                         x=numeric(),
                         y=numeric())
 
+datacol <- 3
+guidecol <- 4
+
 setLoc <- function(name, angle) {
     xy <- deviceLoc(grobX(name, angle), grobY(name, angle), valueOnly=TRUE)
     locations <<- rbind(locations,
@@ -52,12 +55,13 @@ node <- function(name, label=name, face="plain",
     setLoc(name, 270)
 }
 
+arr <- function(end) {
+    arrow(angle=30, length=unit(3, "mm"), type="closed", ends=end)
+}
+
 edge <- function(from, fromAngle, to, toAngle,
                  fromdx=0, todx=0, 
                  lty="solid", curv=1, inflect=FALSE, ends="last") {
-    arr <- function(end) {
-        arrow(angle=30, length=unit(3, "mm"), type="closed", ends=end)
-    }
     x <- unit.c(unit(getLoc(from, fromAngle, "x"), "in") +
                 unit(fromdx, "mm"),
                 unit(getLoc(to, toAngle, "x"), "in") +
