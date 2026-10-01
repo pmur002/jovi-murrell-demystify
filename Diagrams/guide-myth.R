@@ -1,8 +1,8 @@
 
 source("common.R")
 
-svg("guide-myth.svg", width=4.1, height=2)
-
+guide.myth <- function() {
+    
 guidecols <- 3:4
 datacols <- 1:2
 
@@ -77,5 +77,4 @@ grid.segments(unit(getLoc("data value 2", 0, "x"), "in") +
               arrow=arr("last"))
 grid.bezier(x, y, gp=gpar(fill=black, lwd=1, lty="dashed"))
 
-
-dev.off()
+}

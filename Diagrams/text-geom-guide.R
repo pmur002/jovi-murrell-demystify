@@ -1,8 +1,8 @@
 
 source("common.R")
 
-svg("text-geom-guide.svg", width=6.2, height=3)
-
+text.geom.guide <- function() {
+    
 grid.newpage()
 
 ## Overall size
@@ -115,4 +115,4 @@ edge("geom feature 2", 270, "relative value 2", 90, lty="dashed")
 edge("absolute value", 180, "relative value", 0, ends="both", lty="dotted")
 edge("relative value", 180, "relative value 2", 0, ends="both", lty="dotted")
 
-dev.off()
+}

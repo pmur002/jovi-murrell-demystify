@@ -1,8 +1,8 @@
 
 source("common.R")
 
-svg("text-guide.svg", width=4.1, height=3)
-
+text.guide <- function() {
+    
 guidecols <- 3:4
 datacols <- 1:2
 
@@ -78,7 +78,7 @@ node("relative value")
 popViewport()
 pushViewport(viewport(layout.pos.col=2:3, layout.pos.row=5))
 grid.text("proximity", y=unit(.5, "npc") + unit(-1, "mm"), vjust=1,
-          gp=gpar(fontsize=10))
+          gp=gpar(fontsize=10), name="gestalt")
 popViewport()
 
 ## Layout
@@ -94,4 +94,4 @@ edge("text shape", 270, "absolute value", 90, lty="dashed")
 edge("geom feature", 270, "relative value", 90, lty="dashed")
 edge("absolute value", 180, "relative value", 0, ends="both", lty="dotted")
 
-dev.off()
+}
