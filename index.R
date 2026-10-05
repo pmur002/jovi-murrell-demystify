@@ -86,7 +86,7 @@ legend <- grid.get("guide-box-right", grep=TRUE)
 #| label: fig-guide-myth
 #| echo: FALSE
 #| out-width: 4.1in
-#| fig.cap: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information.
+#| fig.cap: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information. However, how that decoding happens in the guide is a little hazy.
 include_graphics("Diagrams/guide-myth.svg")
 
 

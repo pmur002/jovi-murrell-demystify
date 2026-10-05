@@ -189,7 +189,7 @@ of how data symbols work.
 For example, we know that encoding trade amounts as the lengths of
 bars will result in an accurate decoding of their relative lengths,
 particularly when they share a common baseline
-[@cleveland1984graphical; @heer2010crowdsourcing].
+[@cleveland1984graphical; @mackinlay1986automatic; @heer2010crowdsourcing].
 We know *why* bars are effective data symbols and this helps us
 to make deliberate choices for encoding information as data symbols.
 
@@ -204,7 +204,7 @@ a mystery (see @fig-guide-myth).
 #| label: fig-guide-myth
 #| echo: FALSE
 #| out-width: 4.1in
-#| fig.cap: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information.
+#| fig.cap: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information. However, how that decoding happens in the guide is a little hazy.
 include_graphics("Diagrams/guide-myth.svg")
 ```
 
