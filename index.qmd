@@ -17,27 +17,29 @@ bibliography: bibliography.bib
 ###### Introduction
 
 A data visualisation can be described as an encoding of information
-into a visual elements---data symbols.
+as visual elements, generally referred to as data symbols.
 The commonly-stated purpose of guides (axes and legends) is to allow
 us to decode information from the data symbols.
 However, guides are themselves composed of visual elements.
-This article aims to answer the question:
+This article addresses the following question:
 If guides allow us to decode data symbols, what allows us to
 decode guides?
 
 ###### Theory/model
 
-We propose that:  guides are also encodings of information,
+Reasoning from an established understanding of how 
+data visualisation perception works,
+we propose that:  guides are also encodings of information,
 just like data symbols;
 information is decoded separately from both data symbols and 
 from guides;
-information from data symbols and guides is combined 
+and information from data symbols and guides is combined 
 via Gestalt principles such as proximity and similarity.
 
 ###### Conclusion
 
 Given this understanding of how guides work, 
-we can question the design of even the most standard guides, such
+we can revisit the design of even the most standard guides, such
 as axes and legends.
 This leads to a novel x-axis design for quantitative length encodings
 and an improved legend design 
@@ -47,6 +49,11 @@ for quantitative colour encodings.
 
 The source code and data sets for this article are available
 from [GitHub](https://github.com/pmur002/jovi-murrell-demystify).
+
+**
+TODO
+Add OSF or figshare link.
+**
 
 :::
 
@@ -150,7 +157,7 @@ ggBar <- function(data=top10) {
                        breaks=1e9*seq(0, 15, 5),
                        labels=paste(seq(0, 15, 5), c("", "", "", "$billion"))) +
     scale_fill_discrete(name=NULL) +
-    labs(title="Top 10 New Zealand Trade Partners", x=NULL, y=NULL) +
+    labs(title="Top 10 New Zealand Trade Partners in 2024", x=NULL, y=NULL) +
     theme(aspect.ratio=1, plot.margin=margin(0, 0, 0, 0),
           plot.background=element_blank(),
           panel.background=element_blank(),
@@ -194,17 +201,20 @@ We know *why* bars are effective data symbols and this helps us
 to make deliberate choices for encoding information as data symbols.
 
 However, we lack corresponding explanations for how guides work.
-The *purpose* of guides---to allow a data visualisation to be decoded---is 
-often stated
-[e.g., @heer_scales_axes_legends],
-but the mechanism by which guides achieve their purpose remains 
-a mystery (see @fig-guide-myth).
+The *purpose* of guides is 
+often stated in data visualisation guidelines: 
+"helping the user understand and interpret the data in your chart" [@ONS-service-manual-dataviz]; "allow readers to decode the graphic" [@heer-scales-axes-legends],
+but the mechanism by which guides achieve their purpose remains a mystery
+(see @fig-guide-myth).
+For example, there is almost no mention of axes and legends in the
+detailed data visualisation framework described in
+@munzner2014visualization.
 
 ```{r}
 #| label: fig-guide-myth
 #| echo: FALSE
 #| out-width: 4.1in
-#| fig.cap: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information. However, how that decoding happens in the guide is a little hazy.
+#| fig.cap: It is commonly agreed that the data symbols in a data visualisation arise from encoding information as the visual features of geometric shapes and the purpose of a guide is to allow us to decode that information. However, the mechanism by which the guide allows that decoding to happen is a little hazy.
 include_graphics("Diagrams/guide-myth.svg")
 ```
 
@@ -309,7 +319,7 @@ The final piece of the puzzle---how the y-axis is used to explain the
 bars---depends on the fact that the y-axis text labels
 are placed right next to the corresponding data symbol bars
 [@wagemans2012gestalt].
-This proximity means that we can associate the information that we decode
+This *proximity* means that we can associate the information that we decode
 from the text labels---the country names---with the associated bars
 (see @fig-text-guide).
 
@@ -375,7 +385,7 @@ and the position of the data symbols for the United Kingdom
 include_graphics("Diagrams/text-guide-annotation.svg")
 ```
 
-## Guides contain geometric shapes too {#sec:geoms}
+## Guides are data symbols too {#sec:geoms}
 
 We will now consider the legend in @fig-trade-bars in a 
 somewhat unconventional way.
@@ -1097,7 +1107,7 @@ grid.force()
 grid.remove("guide-box-right", grep=TRUE)
 ```
 
-## Guides do not necessarily need data symbols
+## Some guides are just text
 
 **
 TODO
@@ -1122,12 +1132,8 @@ include_graphics("Diagrams/text-standalone.svg")
 
 ## Discussion
 
-**
-TODO
-Add explicit list of "discoveries"
-**
-
-We have taken the view that 
+Using only established knowledge, 
+we have taken the view that 
 guides are encodings of information, just like data symbols
 are encodings of information.
 Furthermore, guides are 
@@ -1154,6 +1160,11 @@ Many guides also employ Gestalt principles to
 associate the text label with corresponding data
 symbols.
 
+**
+TODO
+Example of guide that uses Gestalt enclosure (or other grouping principle)?
+**
+
 This approach allows us to think more clearly about how a guide
 contributes to the effectiveness of a data visualisation.
 Armed with this knowledge, we are able to be more deliberate in
@@ -1161,6 +1172,36 @@ our choice of guides and we are able to more effectively critique
 a guide that is chosen for us.
 We have also seen several demonstrations that a deeper understanding of guides
 can lead to the creation of novel and more effective guides.
+
+We have also gained conceptual clarity and simplicity.
+For example, direct labelling and annotations and axes are all
+variations of the same fundamental guide concept.
+
+### Deeper but still shallow
+
+**
+TODO
+Acknowledge that this framework does not engage with cognitive processing
+to any depth (it is mainly perception-based, bottom-up, though it
+does sort of acknowledge the idea of stages in processing
+if not iterations that involve higher-level cognition - it does not
+consider processes like reasoning about relationships or
+decision-making, just the extraction of data).
+Pinker's model (and subsequent theories) do address how legend and data symbols
+are decoded and combined.
+See GoG Chapter 19 discussion of Pinker.
+Could even connect bits of what I am saying to Pinker's model:
+I am saying that the "associated" predicate functions are Gestalt
+grouping principles (NOTE that Pinker talks about Gestalt grouping
+in Section B on page 83).
+See Pictorial–Semantic–Task Framework of Tsai et al (guides are
+"semantic content")
+Also cite the "Theories and Models in Graph Comprehension"
+Fox (2023) which gives overview.
+However, those complex theories are less accessible to data vis
+practitioners and therefore less applicable.
+Plus they did not lead to the sort of insights that this article puts forth.
+**
 
 ### Automation
 

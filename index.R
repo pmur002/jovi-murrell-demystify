@@ -62,7 +62,7 @@ ggBar <- function(data=top10) {
                        breaks=1e9*seq(0, 15, 5),
                        labels=paste(seq(0, 15, 5), c("", "", "", "$billion"))) +
     scale_fill_discrete(name=NULL) +
-    labs(title="Top 10 New Zealand Trade Partners", x=NULL, y=NULL) +
+    labs(title="Top 10 New Zealand Trade Partners in 2024", x=NULL, y=NULL) +
     theme(aspect.ratio=1, plot.margin=margin(0, 0, 0, 0),
           plot.background=element_blank(),
           panel.background=element_blank(),
@@ -86,7 +86,7 @@ legend <- grid.get("guide-box-right", grep=TRUE)
 #| label: fig-guide-myth
 #| echo: FALSE
 #| out-width: 4.1in
-#| fig.cap: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information. However, how that decoding happens in the guide is a little hazy.
+#| fig.cap: It is commonly agreed that the data symbols in a data visualisation arise from encoding information as the visual features of geometric shapes and the purpose of a guide is to allow us to decode that information. However, the mechanism by which the guide allows that decoding to happen is a little hazy.
 include_graphics("Diagrams/guide-myth.svg")
 
 

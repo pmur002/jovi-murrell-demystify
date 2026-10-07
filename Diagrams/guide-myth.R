@@ -32,7 +32,7 @@ guide.myth <- function() {
     setLoc("guidebg", 270)
     fill <- radialGradient(c(adjustcolor(guidecol, alpha=.1),
                              adjustcolor(guidecol, alpha=.7)),
-                           r1=.2)
+                           r1=.2, r2=sqrt(2)/2)
     fillGrob <-
         rectGrob(gp=gpar(col=NA, fill=fill))
     pushViewport(viewport(width=unit(1, "snpc")))
@@ -84,9 +84,9 @@ guide.myth <- function() {
     edge("data value 2", 270, "geom feature", 90)
     x <- unit.c(unit(getLoc("geom feature", 0, "x"), "in"),
                 unit(getLoc("geom feature", 0, "x"), "in") +
-                unit(2.5, "in"),
+                unit(2.3, "in"),
                 unit(getLoc("data value 2", 0, "x"), "in") +
-                unit(2.5, "in"),
+                unit(2.3, "in"),
                 unit(getLoc("data value 2", 0, "x"), "in"))
     y <- unit.c(unit(getLoc("geom feature", 0, "y"), "in"),
                 unit(getLoc("geom feature", 0, "y"), "in"),
@@ -99,9 +99,9 @@ guide.myth <- function() {
                   unit(getLoc("data value 2", 0, "y"), "in"),
                   gp=gpar(fill=black, lwd=1, lty="solid"),
                   arrow=arr("last"))
-    maskfill <- radialGradient(c(adjustcolor(guidecol, alpha=0),
+    maskfill <- radialGradient(c(adjustcolor(guidecol, alpha=.0),
                                  adjustcolor(guidecol, alpha=.7)),
-                               r1=.2)
+                               r1=0, r2=sqrt(2)/2)
     mask <- grobTree(rectGrob(getLoc("databg", 180, "x"),
                               getLoc("databg", 270, "y"),
                               getLoc("databg", 0, "x") - 

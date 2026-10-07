@@ -72,16 +72,17 @@ div.csl-indent {
   <ul class="collapse">
   <li><a href="#annotations" id="toc-annotations" class="nav-link" data-scroll-target="#annotations">Annotations</a></li>
   </ul></li>
-  <li><a href="#sec:geoms" id="toc-sec:geoms" class="nav-link" data-scroll-target="#sec\:geoms"><span class="header-section-number">3</span> Guides contain geometric shapes too</a>
+  <li><a href="#sec:geoms" id="toc-sec:geoms" class="nav-link" data-scroll-target="#sec\:geoms"><span class="header-section-number">3</span> Guides are data symbols too</a>
   <ul class="collapse">
   <li><a href="#improving-a-legend" id="toc-improving-a-legend" class="nav-link" data-scroll-target="#improving-a-legend">Improving a legend</a></li>
   <li><a href="#direct-labelling" id="toc-direct-labelling" class="nav-link" data-scroll-target="#direct-labelling">Direct labelling</a></li>
   <li><a href="#improving-an-x-axis" id="toc-improving-an-x-axis" class="nav-link" data-scroll-target="#improving-an-x-axis">Improving an x-axis</a></li>
   <li><a href="#improving-a-quantitative-colour-legend" id="toc-improving-a-quantitative-colour-legend" class="nav-link" data-scroll-target="#improving-a-quantitative-colour-legend">Improving a quantitative colour legend</a></li>
   </ul></li>
-  <li><a href="#guides-do-not-necessarily-need-data-symbols" id="toc-guides-do-not-necessarily-need-data-symbols" class="nav-link" data-scroll-target="#guides-do-not-necessarily-need-data-symbols"><span class="header-section-number">4</span> Guides do not necessarily need data symbols</a></li>
+  <li><a href="#some-guides-are-just-text" id="toc-some-guides-are-just-text" class="nav-link" data-scroll-target="#some-guides-are-just-text"><span class="header-section-number">4</span> Some guides are just text</a></li>
   <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion"><span class="header-section-number">5</span> Discussion</a>
   <ul class="collapse">
+  <li><a href="#deeper-but-still-shallow" id="toc-deeper-but-still-shallow" class="nav-link" data-scroll-target="#deeper-but-still-shallow">Deeper but still shallow</a></li>
   <li><a href="#automation" id="toc-automation" class="nav-link" data-scroll-target="#automation">Automation</a></li>
   </ul></li>
   <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
@@ -137,19 +138,20 @@ Abstract
 <div class="callout-body-container callout-body">
 <section id="introduction" class="level6">
 <h6 class="anchored" data-anchor-id="introduction">Introduction</h6>
-<p>A data visualisation can be described as an encoding of information into a visual elements—data symbols. The commonly-stated purpose of guides (axes and legends) is to allow us to decode information from the data symbols. However, guides are themselves composed of visual elements. This article aims to answer the question: If guides allow us to decode data symbols, what allows us to decode guides?</p>
+<p>A data visualisation can be described as an encoding of information as visual elements, generally referred to as data symbols. The commonly-stated purpose of guides (axes and legends) is to allow us to decode information from the data symbols. However, guides are themselves composed of visual elements. This article addresses the following question: If guides allow us to decode data symbols, what allows us to decode guides?</p>
 </section>
 <section id="theorymodel" class="level6">
 <h6 class="anchored" data-anchor-id="theorymodel">Theory/model</h6>
-<p>We propose that: guides are also encodings of information, just like data symbols; information is decoded separately from both data symbols and from guides; information from data symbols and guides is combined via Gestalt principles such as proximity and similarity.</p>
+<p>Reasoning from an established understanding of how data visualisation perception works, we propose that: guides are also encodings of information, just like data symbols; information is decoded separately from both data symbols and from guides; and information from data symbols and guides is combined via Gestalt principles such as proximity and similarity.</p>
 </section>
 <section id="conclusion" class="level6">
 <h6 class="anchored" data-anchor-id="conclusion">Conclusion</h6>
-<p>Given this understanding of how guides work, we can question the design of even the most standard guides, such as axes and legends. This leads to a novel x-axis design for quantitative length encodings and an improved legend design for quantitative colour encodings.</p>
+<p>Given this understanding of how guides work, we can revisit the design of even the most standard guides, such as axes and legends. This leads to a novel x-axis design for quantitative length encodings and an improved legend design for quantitative colour encodings.</p>
 </section>
 <section id="materials" class="level6">
 <h6 class="anchored" data-anchor-id="materials">Materials</h6>
 <p>The source code and data sets for this article are available from <a href="https://github.com/pmur002/jovi-murrell-demystify">GitHub</a>.</p>
+<p><strong> TODO Add OSF or figshare link. </strong></p>
 </section>
 </div>
 </div>
@@ -205,7 +207,7 @@ Figure&nbsp;1: A bar plot of international trade between New Zealand and its maj
 <p>The axes, the legend, and even the title, are collectively known as <em>guides</em> <span class="citation" data-cites="wilkinson2005grammar">(<a href="#ref-wilkinson2005grammar" role="doc-biblioref">Wilkinson 2005</a>)</span> because they share a common purpose: they explain how data values are encoded within the plot. The guides are there to help us to decode the data symbols.</p>
 <p>For example, in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, the trade account, imports versus exports, is encoded as the colour of the bar data symbols. However, bars that differ in colour only indicate that there are different groups—salmon is different from turquoise. The legend is necessary to explain <em>which</em> group corresponds to each colour—salmon means imports and turquoise means exports.</p>
 <p>We have an understanding of how data symbols work. For example, we know that encoding trade amounts as the lengths of bars will result in an accurate decoding of their relative lengths, particularly when they share a common baseline <span class="citation" data-cites="cleveland1984graphical mackinlay1986automatic heer2010crowdsourcing">(<a href="#ref-cleveland1984graphical" role="doc-biblioref">Cleveland and McGill 1984</a>; <a href="#ref-mackinlay1986automatic" role="doc-biblioref">Mackinlay 1986</a>; <a href="#ref-heer2010crowdsourcing" role="doc-biblioref">Heer and Bostock 2010</a>)</span>. We know <em>why</em> bars are effective data symbols and this helps us to make deliberate choices for encoding information as data symbols.</p>
-<p>However, we lack corresponding explanations for how guides work. The <em>purpose</em> of guides—to allow a data visualisation to be decoded—is often stated <span class="citation" data-cites="heer_scales_axes_legends">(e.g., <a href="#ref-heer_scales_axes_legends" role="doc-biblioref">Heer et al. n.d.</a>)</span>, but the mechanism by which guides achieve their purpose remains a mystery (see <a href="#fig-guide-myth" class="quarto-xref">Figure&nbsp;2</a>).</p>
+<p>However, we lack corresponding explanations for how guides work. The <em>purpose</em> of guides is often stated in data visualisation guidelines: “helping the user understand and interpret the data in your chart” <span class="citation" data-cites="ONS-service-manual-dataviz">(<a href="#ref-ONS-service-manual-dataviz" role="doc-biblioref">Office for National Statistics n.d.</a>)</span>; “allow readers to decode the graphic” <span class="citation" data-cites="heer-scales-axes-legends">(<a href="#ref-heer-scales-axes-legends" role="doc-biblioref">Heer et al. n.d.</a>)</span>, but the mechanism by which guides achieve their purpose remains a mystery (see <a href="#fig-guide-myth" class="quarto-xref">Figure&nbsp;2</a>). For example, there is almost no mention of axes and legends in the detailed data visualisation framework described in <span class="citation" data-cites="munzner2014visualization">Munzner (<a href="#ref-munzner2014visualization" role="doc-biblioref">2014</a>)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-guide-myth" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -214,7 +216,7 @@ Figure&nbsp;1: A bar plot of international trade between New Zealand and its maj
 <img src="Diagrams/guide-myth.svg" class="img-fluid figure-img" style="width:4.1in">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-guide-myth-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: It is commonly agreed that information is encoded as the visual features of geometric shapes to produce data symbols and the purpose of a guide is to allow us to decode that information. However, how that decoding happens in the guide is a little hazy.
+Figure&nbsp;2: It is commonly agreed that the data symbols in a data visualisation arise from encoding information as the visual features of geometric shapes and the purpose of a guide is to allow us to decode that information. However, the mechanism by which the guide allows that decoding to happen is a little hazy.
 </figcaption>
 </figure>
 </div>
@@ -246,7 +248,7 @@ Figure&nbsp;3: The simplest sort of guide consists only of text labels, like the
 </div>
 </div>
 <p>In this sense, the y-axis guide is just like the bar data symbols because they both result from encoding data values as visual features and we decode information from those visual features. On their own, the bars and the y-axis work in very similar ways.</p>
-<p>The final piece of the puzzle—how the y-axis is used to explain the bars—depends on the fact that the y-axis text labels are placed right next to the corresponding data symbol bars <span class="citation" data-cites="wagemans2012gestalt">(<a href="#ref-wagemans2012gestalt" role="doc-biblioref">Wagemans et al. 2012</a>)</span>. This proximity means that we can associate the information that we decode from the text labels—the country names—with the associated bars (see <a href="#fig-text-guide" class="quarto-xref">Figure&nbsp;3</a>).</p>
+<p>The final piece of the puzzle—how the y-axis is used to explain the bars—depends on the fact that the y-axis text labels are placed right next to the corresponding data symbol bars <span class="citation" data-cites="wagemans2012gestalt">(<a href="#ref-wagemans2012gestalt" role="doc-biblioref">Wagemans et al. 2012</a>)</span>. This <em>proximity</em> means that we can associate the information that we decode from the text labels—the country names—with the associated bars (see <a href="#fig-text-guide" class="quarto-xref">Figure&nbsp;3</a>).</p>
 <section id="annotations" class="level3">
 <h3 class="anchored" data-anchor-id="annotations">Annotations</h3>
 <p><a href="#fig-trade-bars-annotation" class="quarto-xref">Figure&nbsp;4</a> shows a variation on <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, with an <em>annotation</em> added. This is another sort of guide that consists of a label to describe a point of interest. In this case, the point is that the United Kingdom, New Zealand’s largest trade partner a century ago, is a much smaller partner (in relative terms) in the present day.</p>
@@ -283,7 +285,7 @@ Figure&nbsp;5: The annotation in <a href="#fig-trade-bars-annotation" class="qua
 </section>
 </section>
 <section id="sec:geoms" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="sec:geoms"><span class="header-section-number">3</span> Guides contain geometric shapes too</h2>
+<h2 data-number="3" class="anchored" data-anchor-id="sec:geoms"><span class="header-section-number">3</span> Guides are data symbols too</h2>
 <p>We will now consider the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> in a somewhat unconventional way. For a start, we will consider the legend in isolation, as shown below.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -458,8 +460,8 @@ Figure&nbsp;13: The correlation matrix from <a href="#fig-corr-mats-penguin" cla
 </div>
 </section>
 </section>
-<section id="guides-do-not-necessarily-need-data-symbols" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="guides-do-not-necessarily-need-data-symbols"><span class="header-section-number">4</span> Guides do not necessarily need data symbols</h2>
+<section id="some-guides-are-just-text" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="some-guides-are-just-text"><span class="header-section-number">4</span> Some guides are just text</h2>
 <p><strong> TODO Discussion of importance of text - need to talk about the title! </strong></p>
 <p><strong> TODO Don’t forget Wilkinson’s “the <em>label()</em> attribute can serve as a guide”. “guide to guides” comment about labels on guides. [p347-348 2nd Edition] </strong></p>
 <div class="cell">
@@ -479,13 +481,18 @@ Figure&nbsp;14: A guide may consist only of text labels and need no association 
 </section>
 <section id="discussion" class="level2" data-number="5">
 <h2 data-number="5" class="anchored" data-anchor-id="discussion"><span class="header-section-number">5</span> Discussion</h2>
-<p><strong> TODO Add explicit list of “discoveries” </strong></p>
-<p>We have taken the view that guides are encodings of information, just like data symbols are encodings of information. Furthermore, guides are visual elements that we decode information from, just like we decode information from data symbols.</p>
+<p>Using only established knowledge, we have taken the view that guides are encodings of information, just like data symbols are encodings of information. Furthermore, guides are visual elements that we decode information from, just like we decode information from data symbols.</p>
 <p>The main difference between guides and data symbols is that guides encode information as text labels whereas data symbols encode information as geometric shapes (though some guides also encode information as geometric shapes).</p>
 <p>Information from guides is associated with information from data symbols via Gestalt processes like proximity, connection, and similarity.</p>
 <p><strong> TODO Some guides are standalone (requiring no association with data symbols) e.g., titles </strong></p>
 <p>In summary, a guide is an encoding of information as a text label. Many guides also employ Gestalt principles to associate the text label with corresponding data symbols.</p>
+<p><strong> TODO Example of guide that uses Gestalt enclosure (or other grouping principle)? </strong></p>
 <p>This approach allows us to think more clearly about how a guide contributes to the effectiveness of a data visualisation. Armed with this knowledge, we are able to be more deliberate in our choice of guides and we are able to more effectively critique a guide that is chosen for us. We have also seen several demonstrations that a deeper understanding of guides can lead to the creation of novel and more effective guides.</p>
+<p>We have also gained conceptual clarity and simplicity. For example, direct labelling and annotations and axes are all variations of the same fundamental guide concept.</p>
+<section id="deeper-but-still-shallow" class="level3">
+<h3 class="anchored" data-anchor-id="deeper-but-still-shallow">Deeper but still shallow</h3>
+<p><strong> TODO Acknowledge that this framework does not engage with cognitive processing to any depth (it is mainly perception-based, bottom-up, though it does sort of acknowledge the idea of stages in processing if not iterations that involve higher-level cognition - it does not consider processes like reasoning about relationships or decision-making, just the extraction of data). Pinker’s model (and subsequent theories) do address how legend and data symbols are decoded and combined. See GoG Chapter 19 discussion of Pinker. Could even connect bits of what I am saying to Pinker’s model: I am saying that the “associated” predicate functions are Gestalt grouping principles (NOTE that Pinker talks about Gestalt grouping in Section B on page 83). See Pictorial–Semantic–Task Framework of Tsai et al (guides are “semantic content”) Also cite the “Theories and Models in Graph Comprehension” Fox (2023) which gives overview. However, those complex theories are less accessible to data vis practitioners and therefore less applicable. Plus they did not lead to the sort of insights that this article puts forth. </strong></p>
+</section>
 <section id="automation" class="level3">
 <h3 class="anchored" data-anchor-id="automation">Automation</h3>
 <p>It is one thing to <em>conceive</em> of a slightly unusual guide (<a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;7</a>) or an entirely novel guide (<a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;10</a>), but there remains the problem of actually <em>creating</em> guides outside the norm. Most data visualisations are generated by software systems that, conveniently, automate the production of guides. Although some customisation of those default guides may be possible, we are usually limited to a fixed set of predefined guides that have a predefined format.</p>
@@ -524,7 +531,7 @@ Hearst, Marti A. 2023. <span>“Show It or Tell It? <span>Text</span>, Visualiza
 <div id="ref-heer2010crowdsourcing" class="csl-entry" role="listitem">
 Heer, Jeffrey, and Michael Bostock. 2010. <span>“Crowdsourcing Graphical Perception: Using Mechanical Turk to Assess Visualization Design.”</span> In <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>, 203–12. ACM.
 </div>
-<div id="ref-heer_scales_axes_legends" class="csl-entry" role="listitem">
+<div id="ref-heer-scales-axes-legends" class="csl-entry" role="listitem">
 Heer, Jeffrey, Dominik Moritz, Jake VanderPlas, and Brock Craft. n.d. <span>“Scales, Axes, and Legends.”</span> <a href="https://idl.uw.edu/visualization-curriculum/altair-scales-axes-legends/">https://idl.uw.edu/visualization-curriculum/altair-scales-axes-legends/</a>.
 </div>
 <div id="ref-lu2021modeling" class="csl-entry" role="listitem">
@@ -541,6 +548,9 @@ Munzner, Tamara. 2014. <em>Visualization Analysis and Design</em>. AK Peters Vis
 </div>
 <div id="ref-Murrell_2026" class="csl-entry" role="listitem">
 Murrell, Paul. 2026. <span>“What Is Text Doing in a Data Visualisation?”</span> <em>Journal of Data Science, Statistics, and Visualisation</em> 6 (3). <a href="https://doi.org/10.52933/jdssv.v6i3.172">https://doi.org/10.52933/jdssv.v6i3.172</a>.
+</div>
+<div id="ref-ONS-service-manual-dataviz" class="csl-entry" role="listitem">
+Office for National Statistics. n.d. <span>“Data Visualisation – <span>ONS</span> Service Manual.”</span> <a href="https://service-manual.ons.gov.uk/data-visualisation">https://service-manual.ons.gov.uk/data-visualisation</a>.
 </div>
 <div id="ref-Rlang" class="csl-entry" role="listitem">
 R Core Team. 2026. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://doi.org/10.32614/R.manuals">https://doi.org/10.32614/R.manuals</a>.
