@@ -527,3 +527,11 @@ grid.remove("guide-box-right", grep=TRUE)
 #| fig.cap: A guide may consist only of text labels and need no association with data symbols, for example, the title in @fig-trade-bars.  In this case, the value of the guide comes directly from being able to decode absolute information (about the data visualisation as a whole) from the text label.
 include_graphics("Diagrams/text-standalone.svg")
 
+
+## -----------------------------------------------------------------------------
+#| label: fig-pinker
+#| echo: FALSE
+#| out-width: 100%
+#| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990ATO.  This adaptation includes the original "message flags" from @Pinker1990ATO.
+include_graphics("Pinker/pinker.svg")
+

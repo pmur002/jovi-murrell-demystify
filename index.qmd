@@ -1171,13 +1171,15 @@ The main difference between guides and data symbols is that
 guides encode information as text labels whereas 
 data symbols encode information as geometric shapes
 (though some guides also encode information as geometric shapes).
+This means that we can decode absolute values from guides,
+whereas we can only decode relative values from data symbols.
 
 Information from guides is associated with information
 from data symbols via Gestalt processes like
 proximity, similarity, and connection.
 
-In summary, a guide is an encoding of information as a text label.
-Many guides also employ Gestalt principles to
+In summary, a guide is an encoding of information as a text label and
+most guides employ Gestalt principles to
 associate the text label with corresponding data
 symbols.
 
@@ -1194,45 +1196,70 @@ For example, we have seen that
 direct labelling and annotations and axes are all
 variations of the same fundamental guide concept.
 
-### Deeper but still shallow
+### Deeper but still shallow?
 
-The conceptual model proposed in this article has merit as a 
+The conceptual approach proposed in this article aims to provide a
 simple model with practical value.
 It suggests a way of thinking about guides that is easy to 
 comprehend and that is easy to apply.
 
-**
-TODO
-Acknowledge that this framework does not engage with cognitive processing
-to any depth (it is mainly perception-based, bottom-up, though it
-does sort of acknowledge the idea of stages in processing
-if not iterations that involve higher-level cognition - it does not
-consider processes like reasoning about relationships or
-decision-making, just the extraction of data).
-Pinker's model (and subsequent theories) do address how legend and data symbols
-are decoded and combined.
-See GoG Chapter 19 discussion of Pinker.
-Could even connect bits of what I am saying to Pinker's model:
-I am saying that the "associated" predicate functions are Gestalt
-grouping principles (NOTE that Pinker talks about Gestalt grouping
-in Section B on page 83).
-See Pictorial–Semantic–Task Framework of Tsai et al (guides are
-"semantic content")
-Also cite the "Theories and Models in Graph Comprehension"
-Fox (2023) which gives overview.
-However, those complex theories are less accessible to data vis
-practitioners and therefore less applicable.
-Plus they do not consider the construction of guides,
-only the reading of them.
-Plus they did not lead to the sort of insights that this article puts forth.
-**
+However, the focus of this model is limited to just the extraction of simple
+information from a data visualisation.
+The model addresses only one small corner of the general
+problem of *graph comprehension* [@Fox2023].
+
+Nevertheless, the approach that we have described makes a small
+contribution to that broader issue.
+Many theories of graph comprehension emphasise the
+importance of integrating information that is decoded from data symbols
+with information that is decoded from 
+guides---"integrative processes that relate these meanings 
+[from graphic patterns]
+to the referents inferred from labels and titles" [@Carpenter1998AMO];
+"once aggregate visual clusters have been ... related to the referents"
+[@Ratwani2008ThinkingGC];
+"coordinated 
+processing of pictorial and semantic features" [@tsai2026pictorial]---but
+the mechanism by which that integration occurs
+is assumed rather than made explicit.
+
+The approach described in this article provides greater clarity on
+that integrative process.
+
+One theory of graph comprehension that does cover the integration of
+information from data symbols and guides is @Pinker1990ATO.
+There are in fact many similarities with the proposal in this
+article:
+a data visualisation is divided into a *framework* (guides) and
+*pictorial material* (data symbols);
+the pictorial material encodes variables as *visual attributes* and
+the framework consists of both *text* and *geometric shapes*;
+*absolute values* are decoded from text and
+*ratio values* are decoded from attributes;
+and absolute values are associated with ratio values through
+*perceptual grouping* (see @fig-pinker).
+
+```{r}
+#| label: fig-pinker
+#| echo: FALSE
+#| out-width: 100%
+#| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990ATO.  This adaptation includes the original "message flags" from @Pinker1990ATO.
+include_graphics("Pinker/pinker.svg")
+```
+
+One contribution of the proposal in this article is its relative
+simplicity.
+A casual comparison of @fig-text-geom-guide with @fig-pinker does not
+suggest that the two diagrams are addressing the same problem.
 
 **
 TODO
-Don't forget Wilkinson's 
-"the *label()* attribute can serve as a guide".
-"guide to guides" comment about labels on guides.
-[p347-348 2nd Edition]
+Mine is just a simplified version of part of Pinker?
+In my defence, Pinker's is pretty complicated (mine is simpler)
+as demonstrated by comparison of diagrams
+and by fact that I only realised the connection once I had my own ideas
+(and Wilkinson's accessible explanation)
+Plus they did not lead to the sort of insights that this article puts forth.
 **
 
 ### Automation

@@ -1,0 +1,71 @@
+digraph G {
+  graph [ rankdir=TD; margin=.2; nodesep=1; forcelabels=true; ];
+  node [ fontsize=12; fontname="sans bold"; margin=0 ];
+  edge [ lblstyle="above, sloped" ];
+
+  scene [ label=""; xlabel="scene\ngraph"; shape=circle ];
+  frame [ label=""; xlabel="framework"; shape=circle ];
+  pict  [ label=""; xlabel="pictorial\nmaterial"; shape=circle ];
+  framen [ label="*n"; shape=circle ];
+  frametext [ label=""; xlabel="text"; shape=circle ];
+  frametexttext [ label=""; xlabel="text"; shape=circle ];
+  A [ label=""; xlabel="A", shape=circle ];  
+  Aabs [ label="Vn = A"; shape=rect ];
+  frametexti [ label="*i"; xlabel="text"; shape=circle ];
+  B [ label=""; xlabel="B", shape=circle ];  
+  BC [ label="i : Vn absolute-value = B <-> Vn ratio-value = C"; shape=rect ];
+
+  geomn [ label="*n"; xlabel="geometric-shape"; shape=circle ];
+  geomi [ label="*i"; xlabel="geometric-shape\nsmall"; shape=circle ];
+  geomC [ label=""; shape=circle ];
+  C [ label=""; xlabel="C", shape=circle ];  
+
+  pictj [ label="*j"; shape=circle ];
+  textj [ label="*j"; xlabel="text"; shape=circle ];
+  D [ label=""; xlabel="D", shape=circle ];  
+  Dabs [ label="j : Vn absolute-value = D"; shape=rect ];
+  attrn [ label="*n"; shape=circle ];
+  E [ label=""; xlabel="E", shape=circle ];  
+  Erat [ label="j : Vn ratio-value = E"; shape=rect ];
+
+  scene -> frame [ xlabel="part" ];
+  scene -> pict [ xlabel="part" ];
+
+  subgraph cluster_0 {
+      rankdir=LR;
+      framen -> geomn [ xlabel="part" ];
+      geomn -> attrn [ xlabel="coord-sys"; dir=back ];
+      attrn -> pictj [ xlabel="attribute" ];
+      pictj -> textj [ dir=both; xlabel="associated" ];      
+  }
+
+  subgraph cluster_0 {
+      rankdir=LR;
+      frametexti -> geomi [ dir=both; xlabel="associated" ];
+      geomi -> geomC [ xlabel="attribute" ];
+  }
+
+  frame -> framen [ xlabel="part" ];
+  framen -> frametext [ xlabel="part" ];
+  frametext -> frametexttext [ xlabel="part" ];
+  frametexttext -> A;
+  A -> Aabs [ style=dashed; arrowhead="none" ];
+  frametext -> frametexti [ xlabel="part" ];
+  frametexti -> B [ xlabel="spells" ];
+  B -> BC [ style=dashed; arrowhead="none" ];
+
+  geomn -> frametext [ dir=both; xlabel="associated" ];
+  geomn -> geomi [ dir=both; xlabel="associated" ];
+  geomn -> geomC [ xlabel="coord-sys" ];
+  geomC -> C [ xlabel="extent" ];
+  C -> BC [ style=dashed; arrowhead="none" ];
+
+  pict  -> pictj [ xlabel="part" ];
+  textj -> D [ xlabel="spells" ];
+  D -> Dabs [ style=dashed; arrowhead="none" ];
+  attrn -> E [ xlabel="extent" ];
+  E -> Erat [ style=dashed; arrowhead="none" ];  
+
+  { rank=same; framen, pictj, textj; attrn, geomn }
+  { rank=same; frametexttext, frametexti, geomi, geomC }
+}
