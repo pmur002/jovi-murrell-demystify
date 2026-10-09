@@ -4,4 +4,12 @@
   but with the boxes put back in
 
 
-dot -T svg -o pinker.svg pinker.dot 
++ Graphviz
+
+  dot -T svg -o pinker.svg pinker.dot 
+
+
++ TikZ
+
+  lualatex --output-format=dvi pinker.tex
+  dvisvgm pinker.dvi

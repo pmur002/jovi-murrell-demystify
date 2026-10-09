@@ -1,0 +1,33 @@
+\documentclass{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{backgrounds}
+\tikzset{
+  >={Triangle[length=3mm,width=2mm]},
+  every node/.style={
+    minimum size=.8cm,
+    inner sep=1mm
+  }
+}
+\begin{document}
+\sffamily
+\begin{tikzpicture}[x=1cm,y=-1cm,scale=10,background rectangle/.style={fill=white},show background rectangle]
+  \node[draw,circle,label={[align=center]above:scene\\graph}] (scene) at (1, 0) {};
+  \node[draw,circle,label=left:framework] (frame) at (.2, .2) {};
+  \node[draw,circle,label={[align=center]right:pictorial\\material}] (pict) at (1.8, .2) {};
+  \node[draw,circle] (framen) at (.2, .4) {*n};
+  \node[draw,circle,label=left:text] (frametext) at (.1, .6) {};
+  \node[draw,circle,label=left:text] (frametexttext) at (0, .8) {};
+  \node[draw,circle,label=left:A] (A) at (.1, 1) {};  
+  \node[draw,rectangle] (Aabs) at (.1, 1.2) {$\rm{V}_{\rm{n}} = A$};
+
+  \draw[->] (scene) -- (frame) node [midway,sloped,above=-2mm] {part};
+  \draw[->] (scene) -- (pict) node [midway,sloped,above=-2mm] {part};
+  \draw[<-] (framen) -- (frame) node [midway,sloped,above=-2mm] {part};
+  \draw[<-] (frametext) -- (framen) node [midway,sloped,above=-2mm] {part};
+  \draw[<-] (frametexttext) -- (frametext) node [midway,sloped,above=-2mm] {part};
+  \draw[->] (frametexttext) -- (A) node [midway,sloped,above=-2mm] {spells};
+  \draw[style=dashed] (A) -- (Aabs);
+
+\end{tikzpicture}
+\end{document}
