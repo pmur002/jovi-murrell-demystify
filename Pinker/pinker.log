@@ -1,4 +1,4 @@
-This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2026.2.4)  12 OCT 2026 15:17
+This is LuaHBTeX, Version 1.14.0 (TeX Live 2022/dev/Debian)  (format=lualatex 2026.2.4)  12 OCT 2026 15:46
  restricted system commands enabled.
 **pinker.tex
 (./pinker.tex
@@ -577,11 +577,11 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 Here is how much of LuaTeX's memory you used:
  13746 strings out of 477805
  100000,662416 words of node,token memory allocated
- 24045 words of node memory still in use:
-   479 hlist, 8 vlist, 1 rule, 28 disc, 2 local_par, 28 math, 855 glue, 38 kern,
- 42 penalty, 365 glyph, 1750 attribute, 48 glue_spec, 1750 attribute_list, 2 wri
+ 24265 words of node memory still in use:
+   479 hlist, 8 vlist, 1 rule, 34 disc, 2 local_par, 28 math, 855 glue, 38 kern,
+ 42 penalty, 387 glyph, 1750 attribute, 48 glue_spec, 1750 attribute_list, 2 wri
 te, 931 pdf_literal, 44 pdf_colorstack nodes
-   avail lists: 2:31,3:1949,4:98,5:88,6:6,7:2516,8:23,9:990,11:56
+   avail lists: 2:31,3:1949,4:98,5:88,6:6,7:2560,8:23,9:990,11:68
  33887 multiletter control sequences out of 65536+600000
  36 fonts using 2352615 bytes
  100i,7n,98p,414b,745s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -590,7 +590,7 @@ public/lm/lmsans10-regular.otf></usr/share/texmf/fonts/opentype/public/lm/lmsans
 10-bold.otf></usr/share/texmf/fonts/type1/public/lm/lmss10.pfb></usr/share/texmf
 /fonts/type1/public/lm/lmss8.pfb></usr/share/texmf/fonts/type1/public/lm/lmssbx1
 0.pfb></usr/share/texmf/fonts/type1/public/lm/lmsso10.pfb>
-Output written on pinker.pdf (1 page, 76160 bytes).
+Output written on pinker.pdf (1 page, 76249 bytes).
 
 PDF statistics: 42 PDF objects out of 1000 (max. 8388607)
  28 compressed objects within 1 object stream

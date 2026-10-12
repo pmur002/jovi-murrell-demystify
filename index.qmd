@@ -1196,6 +1196,10 @@ For example, we have seen that
 direct labelling and annotations and axes are all
 variations of the same fundamental guide concept.
 
+These ideas have been demonstrated using a simple bar plot 
+and a correlation matrix, but they are applicable to 
+any guide on any data visualisation.
+
 ### Deeper but still shallow?
 
 The conceptual approach proposed in this article aims to provide a
@@ -1232,12 +1236,13 @@ There are in fact many similarities with the proposal in this
 article:
 a data visualisation is divided into a *framework* (guides) and
 *pictorial material* (data symbols);
-the pictorial material encodes variables as *visual attributes* and
+the pictorial material encodes variables as *visual attributes* 
+(visual features) and
 the framework consists of both *text* and *geometric shapes*;
-*absolute values* are decoded from text and
-*ratio values* are decoded from attributes;
+*absolute values* are decoded from text whereas only
+*ratio values* (relative values) are decoded from attributes;
 and absolute values are associated with ratio values through
-*perceptual grouping* (see @fig-pinker).
+*perceptual grouping* (Gestalt grouping; see @fig-pinker).
 
 ```{r}
 #| label: fig-pinker
@@ -1249,18 +1254,14 @@ include_graphics("Pinker/pinker.svg")
 
 One contribution of the proposal in this article is its relative
 simplicity.
-A casual comparison of @fig-text-geom-guide with @fig-pinker does not
-suggest that the two diagrams are addressing the same problem.
-
-**
-TODO
-Mine is just a simplified version of part of Pinker?
-In my defence, Pinker's is pretty complicated (mine is simpler)
-as demonstrated by comparison of diagrams
-and by fact that I only realised the connection once I had my own ideas
-(and Wilkinson's accessible explanation)
-Plus they did not lead to the sort of insights that this article puts forth.
-**
+For example, 
+it requires some effort to establish that @fig-pinker is
+addressing the same problem as @fig-text-geom-guide.
+A second contribution is the stricter interpretation of the
+mechanism for associating geometric shapes in legends with
+geometric shapes in data symbols.
+Finally, this article applies its finer analysis to critique the
+design of simple guides.
 
 ### Automation
 
