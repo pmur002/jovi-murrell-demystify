@@ -1,8 +1,11 @@
 \documentclass{standalone}
+\usepackage{sfmath}
 \usepackage{tikz}
 \usetikzlibrary{arrows.meta}
 \usetikzlibrary{backgrounds}
+\usetikzlibrary{fit}
 \tikzset{
+  every picture/.style={line width=1pt},
   >={Triangle[length=3mm,width=2mm]},
   every node/.style={
     minimum size=.8cm,
@@ -12,22 +15,64 @@
 \begin{document}
 \sffamily
 \begin{tikzpicture}[x=1cm,y=-1cm,scale=10,background rectangle/.style={fill=white},show background rectangle]
-  \node[draw,circle,label={[align=center]above:scene\\graph}] (scene) at (1, 0) {};
-  \node[draw,circle,label=left:framework] (frame) at (.2, .2) {};
-  \node[draw,circle,label={[align=center]right:pictorial\\material}] (pict) at (1.8, .2) {};
-  \node[draw,circle] (framen) at (.2, .4) {*n};
-  \node[draw,circle,label=left:text] (frametext) at (.1, .6) {};
-  \node[draw,circle,label=left:text] (frametexttext) at (0, .8) {};
-  \node[draw,circle,label=left:A] (A) at (.1, 1) {};  
-  \node[draw,rectangle] (Aabs) at (.1, 1.2) {$\rm{V}_{\rm{n}} = A$};
+  \node[draw,circle,label={[align=center]above:{\bfseries scene}\\[-1mm]{\bfseries graph}}] (scene) at (.85, 0) {};
+  \node[draw,circle,label=left:{\bfseries framework}] (frame) at (.2, .2) {};
+  \node[draw,circle,label={[align=center]right:{\bfseries pictorial}\\[-1mm]{\bfseries material}}] (pict) at (1.5, .2) {};
+  \node[draw,circle] (framen) at (.2, .4) {*$n$};
+  \node[draw,circle,label=left:{\bfseries text}] (frametext) at (.1, .6) {};
+  \node[draw,circle,label=left:{\bfseries text}] (frametexttext) at (0, .8) {};
+  \node[draw,circle,label=left:{\bfseries ~~~~A}] (A) at (0, 1) {};  
+  \node[draw,rectangle] (Aabs) at (0, 1.2) {$~\rm{V}_{\rm{n}} = \mathbf{A}~$};
+  \node[draw,circle,label=left:{\bfseries text}] (frametexti) at (.25, .8) {*$i$};
+  \node[draw,circle,label=left:{\bfseries ~~~~B}] (B) at (.4, 1) {};
+  \node[draw] (Babs) at (.4, 1.2) {$~i : \rm{V}_{\rm{n}}~absolute~value = \mathbf{B}$};
+  \node[draw] (Crat) at (.85, 1.2) {$\rm{V}_{\rm{n}}~ratio~value = \mathbf{C}~$};
+  \node[draw,rectangle,inner sep=0mm,fit=(Babs)(Crat)] {};
+  \node[draw,circle,label={[align=center]above:{\bfseries geometric}\\[-1mm]{\bfseries shape}}] (geomn) at (.6, .4) {*$n$}; 
+  \node[draw,circle,label={[align=center]below:{\bfseries geometric}\\[-1mm]{\bfseries shape}\\[-1mm]{\bfseries small}}] (geomi) at (.6, .7) {*$i$};
+  \node[draw,circle] (geomC) at (1, .8) {};
+  \node[draw,circle,label=right:{\bfseries C~~~~}] (C) at (.85, 1) {};
+  \node[draw,circle] (pictj) at (1.5, .4) {*$j$};
+  \node[draw,circle,label=right:{\bfseries text}] (textj) at (1.8, .4) {*$j$};
+  \node[draw,circle,label=right:{\bfseries D~~~~}] (D) at (1.8, .6) {};
+  \node[draw,rectangle] (Dabs) at (1.8, .8) {$~j : \rm{V}_{\rm{n}}~absolute~value= \mathbf{D}~$};
+  \node[draw,circle] (attrn) at (1.1, .4) {*$n$};
+  \node[draw,circle,label=right:{\bfseries E~~~~}] (E) at (1.3, .6) {};
+  \node[draw,rectangle] (Eabs) at (1.3, .8) {$~j : \rm{V}_{\rm{n}}~ratio~value= \mathbf{E}~$};
 
-  \draw[->] (scene) -- (frame) node [midway,sloped,above=-2mm] {part};
-  \draw[->] (scene) -- (pict) node [midway,sloped,above=-2mm] {part};
-  \draw[<-] (framen) -- (frame) node [midway,sloped,above=-2mm] {part};
-  \draw[<-] (frametext) -- (framen) node [midway,sloped,above=-2mm] {part};
-  \draw[<-] (frametexttext) -- (frametext) node [midway,sloped,above=-2mm] {part};
-  \draw[->] (frametexttext) -- (A) node [midway,sloped,above=-2mm] {spells};
+  \draw[->] (scene) -- (frame) node [midway,sloped,above=-2mm,text=gray] {part};
+  \draw[->] (scene) -- (pict) node [midway,sloped,above=-2mm,text=gray] {part};
+  \draw[<-] (framen) -- (frame) node [midway,sloped,above=-2mm,text=gray] {part};
+  \draw[<-] (frametext) -- (framen) node [midway,sloped,above=-2mm,text=gray] {part};
+  \draw[<-] (frametexttext) -- (frametext) node [midway,sloped,above=-2mm,text=gray] {part};
+  \draw[->] (frametexttext) -- (A) node [midway,sloped,above=-2mm,text=gray] {spells};
   \draw[style=dashed] (A) -- (Aabs);
+  \draw[->] (frametext) -- (frametexti) node [midway,sloped,above=-2mm,text=gray] {part};
+  \draw[->] (frametexti) -- (B) node [midway,sloped,above=-2mm,text=gray] {spells};
+  \draw[style=dashed] (B.south) |- (.4, 1.2);
+  \draw[->] (framen) -- (geomn) node [midway,sloped,above=-2mm,text=gray] {part};
+  \draw[->] (geomn) -- (geomi) node [midway,sloped,above=-2mm,text=gray] {associated};
+  \draw[<->] (frametexti) -- (geomi) node [midway,sloped,above=-2mm,text=gray] {associated};
+  \draw[<->] (geomi) -- (geomC) node [midway,sloped,above=-2mm,text=gray] {associated};
+  \draw[->] (geomC) -- (C) node [midway,sloped,above=-2mm,text=gray] {extent};
+  \draw[style=dashed] (C.south) |- (.8, 1.2);
+  \draw[->] (geomC) -- (geomn) node [midway,sloped,above=-2mm,text=gray] {coord sys};
+  \draw[->] (pict) -- (pictj) node [midway,sloped,above=-2mm,text=gray] {part};  
+  \draw[<->] (pictj) -- (textj) node [midway,sloped,above=-2mm,text=gray] {associated};
+  \draw[->] (pictj) -- (attrn) node [midway,sloped,above=-2mm,text=gray] {attribute};  
+  \draw[->] (attrn) -- (geomn) node [midway,sloped,above=-2mm,text=gray] {coord sys};
+  \draw[->] (attrn) -- (E) node [midway,sloped,above=-2mm,text=gray] {extent};
+  \draw[->] (textj) -- (D) node [midway,sloped,above=-2mm,text=gray] {spells};
+  \draw[style=dashed] (E.south) |- (Eabs.north);
+  \draw[style=dashed] (D.south) |- (Dabs.north);
+
+  % redraw nodes Babs and Crat with single fitted node around them with
+  % white fill to overwrite dashed edges inside node
+  \node[draw,rectangle,inner sep=0mm,fit=(Babs)(Crat), fill=white] {};
+  \node (Babs) at (.4, 1.2) {$i : \rm{V}_{\rm{n}}~absolute~value = \mathbf{B}$};
+  \node (Crat) at (.85, 1.2) {$\rm{V}_{\rm{n}}~ratio~value = \mathbf{C}$};
+  % add edge between Babs and Crat
+  \draw[<->] (Babs) -- (Crat);
 
 \end{tikzpicture}
 \end{document}
