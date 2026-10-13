@@ -17,7 +17,6 @@ library(ggplot2)
 library(gggrid)
 library(colorspace)
 library(bullseye)
-library(geomtextpath)
 
 
 ## -----------------------------------------------------------------------------
@@ -126,14 +125,6 @@ pushViewport(viewport(width=unit(1, "npc") - margin,
 print(ggAnn, newpage=FALSE)
 grid.force()
 legend <- grid.get("guide-box-right", grep=TRUE)
-
-
-## -----------------------------------------------------------------------------
-#| label: fig-text-guide-annotation
-#| echo: FALSE
-#| out-width: 4.1in
-#| fig.cap: The annotation in @fig-trade-bars-annotation works in a very similar way to the y-axis in @fig-trade-bars.  Information is encoded as the shape of text label and that information can be decoded from the text label.  This information is associated with information from the data symbols, and values decoded from the data symbols, through the *connection* that is created by the line between the text label and the data symbols for the United Kingdom.
-include_graphics("Diagrams/text-guide-annotation.svg")
 
 
 ## -----------------------------------------------------------------------------
@@ -484,7 +475,7 @@ print(ggPenguin, newpage=FALSE)
 #| fig.keep: last
 #| results: hide
 #| message: FALSE
-#| fig.cap: The correlation matrix from @fig-corr-mats-penguin, but a novel legend explains the encoding of correlation using circles that match the data symbols.
+#| fig.cap: The correlation matrix from @fig-corr-mats-penguin, but with a novel legend that explains the encoding of correlation using circles that match the data symbols.
 cols <- diverging_hcl(5, palette="Blue-Red", rev=TRUE)
 textlab <- round(seq(-1, 1, length.out=5), 2)
 legendDot <- function(y, i) {
@@ -532,6 +523,6 @@ include_graphics("Diagrams/text-standalone.svg")
 #| label: fig-pinker
 #| echo: FALSE
 #| out-width: 100%
-#| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990ATO.  This adaptation includes the original "message flags" from @Pinker1990ATO.
+#| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990theory.  This adaptation restores the original "message flags" from @Pinker1990theory that show how absolute values from text labels are associated with relative values from geometric shapes.
 include_graphics("Pinker/pinker.svg")
 

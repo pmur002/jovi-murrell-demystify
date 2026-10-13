@@ -17,9 +17,9 @@ bibliography: bibliography.bib
 ###### Introduction
 
 A data visualisation can be described as an encoding of information
-as visual elements, generally referred to as data symbols.
+in the form of visual elements called data symbols.
 The commonly-stated purpose of guides (axes and legends) is to allow
-us to decode information from the data symbols.
+the viewer to decode information from the data symbols.
 However, guides are themselves composed of visual elements.
 This article addresses the following question:
 If guides allow us to decode data symbols, what allows us to
@@ -39,7 +39,7 @@ via Gestalt principles such as proximity and similarity.
 ###### Conclusion
 
 Given this understanding of how guides work, 
-we can revisit the design of even the most standard guides, such
+we revisit the design of standard guides, such
 as axes and legends.
 This leads to a novel x-axis design for quantitative length encodings
 and an improved legend design 
@@ -104,7 +104,6 @@ library(ggplot2)
 library(gggrid)
 library(colorspace)
 library(bullseye)
-library(geomtextpath)
 ```
 
 ```{r}
@@ -142,7 +141,7 @@ in billions of dollars,
 that were traded between New Zealand and its largest trade partners
 in 2024.\footnote{Stats New Zealand Overseas Merchandise Trade Datasets
 \url{https://www.stats.govt.nz/large-datasets/csv-files-for-download/overseas-merchandise-trade-datasets/}.}
-This plot contains multiple standard components: data symbols
+This plot can be broken down into several standard components: data symbols
 (the bars), a title, an x-axis, a y-axis, and a legend.
 
 ```{r}
@@ -231,7 +230,7 @@ We will also demonstrate that a deeper understanding of guides
 makes it possible to question the design of
 even very standard and established guides.
 
-## Guides are encodings too {#sec:encodings}
+## Guides are encodings too {#sec-encodings}
 
 We are familiar with the idea that data symbols are the result 
 of encoding data values as the visual features
@@ -288,7 +287,7 @@ is that the y-axis is *also* the result of
 encoding country names as the *shape* of the text labels.
 The label for China is in a different vertical position
 than the label for USA *and* the label for China
-uses different letters or glyphs than the label for USA.
+uses different letters than the label for USA.
 The label shapes mean that, in addition to being able to decode that the labels
 are different, we can decode the absolute data values themselves:
 China and USA [@Murrell_2026].
@@ -323,6 +322,8 @@ are placed right next to the corresponding data symbol bars
 This *proximity* means that we can associate the information that we decode
 from the text labels---the country names---with the associated bars
 (see @fig-text-guide).
+For example, the topmost bars are associated with the country China
+because the text label "China" is placed right next to the topmost bars.
 
 ### Annotations
 
@@ -376,18 +377,9 @@ This information is associated with the United Kingdom by Gestalt
 grouping, in this case not by proximity, but
 by *connection*;  there is a line drawn between the position of 
 the annotation label
-and the position of the data symbols for the United Kingdom
-(see @fig-text-guide-annotation).
+and the position of the data symbols for the United Kingdom.
 
-```{r}
-#| label: fig-text-guide-annotation
-#| echo: FALSE
-#| out-width: 4.1in
-#| fig.cap: The annotation in @fig-trade-bars-annotation works in a very similar way to the y-axis in @fig-trade-bars.  Information is encoded as the shape of text label and that information can be decoded from the text label.  This information is associated with information from the data symbols, and values decoded from the data symbols, through the *connection* that is created by the line between the text label and the data symbols for the United Kingdom.
-include_graphics("Diagrams/text-guide-annotation.svg")
-```
-
-## Guides are data symbols too {#sec:geoms}
+## Guides are data symbols too {#sec-geoms}
 
 We will now consider the legend in @fig-trade-bars in a 
 somewhat unconventional way.
@@ -415,7 +407,7 @@ Exports rectangle.
 
 We can decode qualitative differences from the vertical positions 
 and the colours of the
-rectangles and we can decode qualitative differences 
+rectangles, and we can decode qualitative differences 
 from the vertical positions of 
 the labels, *and* we can decode absolute trade accounts from
 the shapes of the text labels.
@@ -439,9 +431,9 @@ like the legend.
 Of course, the legend is not intended to be used in isolation.
 We need to associate the information from the legend with the bar
 data symbols.
-The information that we decode from the legend can be applied to
+The information that we decode from the legend can be associated with
 the bar data symbols through Gestalt grouping again,
-in this case via the similarity of the colours 
+in this case via the *similarity* of the colours 
 [@wagemans2012gestalt];
 the bar data symbols for Exports are the same colour as the rectangles
 for Exports in the legend.
@@ -578,7 +570,7 @@ newLegend()
 
 ### Direct labelling
 
-In the previous section we established that a legend works
+We have established that a legend works
 by associating text labels with geometric shapes
 and then by associating geometric shapes in the
 legend with the geometric shapes of the data symbols.
@@ -592,7 +584,7 @@ and the second step uses the similarity of geometric shapes
 the second step---by optimising the similarity of the
 geometric shapes that are used in the legend and for the data symbols.
 An alternative approach to improving @fig-trade-bars
-is to just remove the second step altogether.
+is just to remove the second step altogether.
 
 @fig-trade-bars-direct moves the
 text labels from the legend to positions directly beside the top two bars.
@@ -615,9 +607,9 @@ reinforces the association between the text labels and the
 relevant bars for China, plus it visually groups the labels with bars of
 similar colour across the whole plot.
 
-It is worth noting that, according to this breakdown, the y-axis 
-in @fig-trade-bars is itself
-a form of direct labelling.
+It is worth noting that, according to this breakdown, 
+a standard y-axis, like the one in @fig-trade-bars,
+is actually just a form of direct labelling.
 
 ```{r}
 #| label: fig-trade-bars-direct
@@ -675,7 +667,7 @@ the China export bar is roughly twice the length of the USA export bar.
 We can decode similar quantitative information from the positions
 of the text labels.  In fact, ratios are even easier to decode
 because of the regular spacing of the text labels.
-Finally, we can decode actual trade amounts from the shapes of the
+Finally, we can decode absolute trade amounts from the shapes of the
 text labels.
 
 However, there are several differences between the y-axis and the x-axis
@@ -697,7 +689,10 @@ comparing colours for similarity as in the legend
 (see @fig-text-geom-guide).
 
 The main point is that the x-axis works in two steps, like the legend,
-which means that we can apply the same idea to modify the x-axis:
+which means that we can modify the x-axis using 
+the same idea that we used to modify 
+the legend in @fig-trade-bars-legend.
+Specifically, we can
 make the geometric shapes in the x-axis as similar as possible
 to the geometric shapes used for the data symbols, except for
 the encoded differences.
@@ -767,7 +762,7 @@ grid.refresh()
 ```
 
 One problem with @fig-trade-bars-x-axis is that it is more
-difficult to compare the rectangles for the data symbols with the rectangles in
+difficult to compare the rectangles in the data symbols with the rectangles in
 the x-axis thanks to the vertical distance between the rectangles
 [@lu2021modeling; @talbot2014four].
 @fig-trade-bars-x-axis-embedded applies a further
@@ -888,6 +883,9 @@ compare the bars themselves.
 demonstrates that direct labelling is not always a good option,
 essentially due to the clutter that it creates
 [@show-or-tell; @ajani2021declutter].
+In essence, an important limitation of direct labelling is that it 
+becomes impossible to place multiple labels directly next to the 
+related data symbol (and *not* too close to unrelated data symbols).
 
 ```{r}
 #| label: fig-trade-bars-x-axis-direct
@@ -1011,14 +1009,14 @@ The legend in @fig-corr-mats-penguin explains that
 the correlation between variables is encoded as
 the colour of each circle data symbol.
 More specifically, the sign of the correlation is encoded as 
-the hue and the magnitude of the correlation is encoded as
-the luminance/chroma.
-We can see that positive correlations are a shade of red,
-with higher correlations a darker and more saturated red, and
-negative correlations are a shade of blue.
+hue and the magnitude of the correlation is encoded as
+luminance/chroma.
+We can see that positive correlations are a shade of blue,
+with higher correlations a darker and more saturated blue, and
+negative correlations are a shade of red.
 
 This sort of legend is a common way to explain an encoding
-of *quantitative* values, in this case correlation, using colour.
+of *quantitative* values using colour, in this case correlation.
 By contrast, the legend in @fig-trade-bars is the usual way to
 explain an encoding of *qualitative* values using colour.
 
@@ -1061,13 +1059,14 @@ is more effective, compared to @fig-corr-mats-penguin,
 because the geometric shapes in the legend
 and in the data symbols are the same size and shape and, in both cases,
 the circles are surrounded by a white background.
+At least some tasks, for example identifying which correlations are
+larger than 0.5, are easier to perform with the new legend.
 
 It is worth noting that the new legend in @fig-corr-mats-penguin-geom
-is also now more similar to the x-axes in 
-@fig-trade-bars, @fig-trade-bars-x-axis, and
-@fig-trade-bars-x-axis-embedded because there is just a
+is also now more similar to the x-axis in 
+@fig-trade-bars because there is just a
 selection of data values encoded as geometric shapes in the legend
-(rather than an attempt to encoded all possible data values as
+(rather than an attempt to encode all possible data values as
 geometric shapes in the legend of @fig-corr-mats-penguin).
 Whereas *qualitative* guides can encode every possible data value,
 *quantitative* guides select a "nice" regular subset of values
@@ -1081,7 +1080,7 @@ of differences and ratios
 #| fig.keep: last
 #| results: hide
 #| message: FALSE
-#| fig.cap: The correlation matrix from @fig-corr-mats-penguin, but a novel legend explains the encoding of correlation using circles that match the data symbols.
+#| fig.cap: The correlation matrix from @fig-corr-mats-penguin, but with a novel legend that explains the encoding of correlation using circles that match the data symbols.
 cols <- diverging_hcl(5, palette="Blue-Red", rev=TRUE)
 textlab <- round(seq(-1, 1, length.out=5), 2)
 legendDot <- function(y, i) {
@@ -1131,6 +1130,8 @@ This requires decoding which is the longest bar, using the
 data symbols, and it requires decoding which country is associated with
 that bar, using the y-axis, *and* it requires decoding that the 
 data visualisation is *about trade*, which makes use of the plot title.
+In other words, the title also encodes information, though the
+information is *metadate* rather than data values.
 
 A plot title differs from axes and legends because it consists of a text
 label, but there is no association with specific data symbols.
@@ -1174,7 +1175,8 @@ data symbols encode information as geometric shapes
 This means that we can decode absolute values from guides,
 whereas we can only decode relative values from data symbols.
 
-Information from guides is associated with information
+Information that we decode from guides is associated with information
+that we decode 
 from data symbols via Gestalt processes like
 proximity, similarity, and connection.
 
@@ -1207,7 +1209,18 @@ simple model with practical value.
 It suggests a way of thinking about guides that is easy to 
 comprehend and that is easy to apply.
 
-However, the focus of this model is limited to just the extraction of simple
+However, any simple model will have some limitations.
+For example, the model contends that only relative values can be
+decoded from data symbols, but it is possible to use small images
+or icons as data symbols from which absolute values can be decoded.
+If we make use of images of a cat and a dog as data symbols
+to represent two categories then it is
+possible to decode not just that there are different categories
+but also that the categories are cats and dogs.
+So the model proposed in this article is limited to the use
+of abstract geometric shapes for data symbols.
+
+Furthermore, the focus of this model is limited to just the extraction of simple
 information from a data visualisation.
 The model addresses only one small corner of the general
 problem of *graph comprehension* [@Fox2023].
@@ -1219,19 +1232,19 @@ importance of integrating information that is decoded from data symbols
 with information that is decoded from 
 guides---"integrative processes that relate these meanings 
 [from graphic patterns]
-to the referents inferred from labels and titles" [@Carpenter1998AMO];
+to the referents inferred from labels and titles" [@carpenter1998model];
 "once aggregate visual clusters have been ... related to the referents"
 [@Ratwani2008ThinkingGC];
 "coordinated 
 processing of pictorial and semantic features" [@tsai2026pictorial]---but
 the mechanism by which that integration occurs
 is assumed rather than made explicit.
-
 The approach described in this article provides greater clarity on
 that integrative process.
 
-One theory of graph comprehension that does cover the integration of
-information from data symbols and guides is @Pinker1990ATO.
+One theory of graph comprehension that does explicitly address
+the integration of
+information from data symbols and guides is @Pinker1990theory.
 There are in fact many similarities with the proposal in this
 article:
 a data visualisation is divided into a *framework* (guides) and
@@ -1248,7 +1261,7 @@ and absolute values are associated with ratio values through
 #| label: fig-pinker
 #| echo: FALSE
 #| out-width: 100%
-#| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990ATO.  This adaptation includes the original "message flags" from @Pinker1990ATO.
+#| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990theory.  This adaptation restores the original "message flags" from @Pinker1990theory that show how absolute values from text labels are associated with relative values from geometric shapes.
 include_graphics("Pinker/pinker.svg")
 ```
 
@@ -1259,9 +1272,10 @@ it requires some effort to establish that @fig-pinker is
 addressing the same problem as @fig-text-geom-guide.
 A second contribution is the stricter interpretation of the
 mechanism for associating geometric shapes in legends with
-geometric shapes in data symbols.
-Finally, this article applies its finer analysis to critique the
-design of simple guides.
+geometric shapes in data symbols (@sec-geoms).
+A final contribution is the application of this proposal to
+critique and suggest modifications to the design of very
+standard guides.
 
 ### Automation
 
@@ -1280,7 +1294,8 @@ The examples in this article were generated using lower-level
 statistical graphics tools and consequently required more time and 
 effort.
 It is not clear whether that additional effort can always be justified, so
-developing a sufficiently general automated system is an area
+developing a sufficiently general automated system that allows 
+greater flexibility in the design of guides is an area
 for future research.
 
 ## Acknowledgements {-}
@@ -1288,16 +1303,18 @@ for future research.
 All data visualisations were generated with R [@Rlang],
 using the following packages:
 
-{bullseye},
-{colorspace},
-{dplyr},
-{gggrid},
-{ggplot2},
-{grid}, 
-{reshape2},
+**bullseye**,
+**colorspace**,
+**dplyr**,
+**gggrid**,
+**ggplot2**,
+**grid**, 
+**reshape2**,
 and
-{scales}.
+**scales**.
 
+Thanks to Christina Murrell for valuable feedback on draft versions
+of this article.
 
 ## References {.unnumbered}
 
