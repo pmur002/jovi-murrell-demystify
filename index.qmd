@@ -596,7 +596,8 @@ in a similar way to the y-axis labels.
 We can decode the exact data values for trade account from the labels
 and rely on the encoding of vertical position of the labels,
 plus Gestalt proximity, to
-group a bar with its corresponding label.
+group a bar with its corresponding label
+(see @fig-text-guide).
 There is no longer any need to compare a geometric shape in the guide with
 the geometric shapes of the data symbols [@carpenter1998model].
 This approach is sometimes called *direct labelling* [@tufte2006beautiful].
@@ -713,6 +714,15 @@ In summary, we are now able to compare the lengths of bar data symbols with
 the lengths of bars in the x-axis, 
 rather than comparing the lengths of bar data symbols with the positions
 of grid lines in the x-axis.
+
+We should acknowledge that there *is* a significant visual difference between
+the x-axis bars and the data symbol bars because the x-axis
+bars are grey whereas the data symbol bars are teal or salmon.
+This difference is necessary in order to differentiate the bars for the
+x-axis from the bars for the data symbols.
+In effect, the use of grey versus teal/salmon encodes the categorical
+information that some bars are for the x-axis and some bars are
+data symbols.
 
 ```{r}
 #| label: fig-trade-bars-x-axis
