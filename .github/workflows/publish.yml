@@ -30,6 +30,14 @@ jobs:
             any::rmarkdown
             any::downlit
             any::xml2
+            any::reshape2
+            any::dplyr
+            any::grid
+            any::scales
+            any::ggplot2
+            any::gggrid
+            any::colorspace
+            any::bullseye
 
       - name: Render and Publish
         uses: quarto-dev/quarto-actions/publish@v2
