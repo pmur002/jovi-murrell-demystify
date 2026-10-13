@@ -149,6 +149,7 @@ This plot can be broken down into several standard components: data symbols
 #| echo: FALSE
 #| fig-keep: last
 #| fig-cap: "A bar plot of international trade between New Zealand and its major partners in 2024."
+#| fig-alt: "A bar plot of international trade between New Zealand and its major partners in 2024. There are two bars per country, one for imports and one for exports. The purpose of this plot is just to show a standard example of plot components: data symbols (bars), axes, legend, and title."
 ggBar <- function(data=top10) {
     ggplot(data) +
     geom_col(aes(amount, country, fill=account), position="dodge") +
@@ -214,6 +215,7 @@ in the detailed data visualisation framework described in
 #| echo: FALSE
 #| out-width: 4.1in
 #| fig.cap: It is commonly agreed that the data symbols in a data visualisation arise from encoding information as the visual features of geometric shapes and the purpose of a guide is to allow us to decode that information. However, the mechanism by which the guide allows that decoding to happen is a little hazy.
+#| fig-alt: A node-and-edge diagram with two columns. The left column represents data symbols, with a line indicating that data values are encoded as visual features of geometric shapes. The right column represents guides and a dashed line that fades out in the middle indicates that guides allow us to decode back from visual features to data values, though exactly how that happens is unclear.
 include_graphics("Diagrams/guide-myth.svg")
 ```
 
@@ -307,6 +309,7 @@ country names---from the text shapes (see @fig-text-guide).
 #| echo: FALSE
 #| out-width: 4.1in
 #| fig.cap: The simplest sort of guide consists only of text labels, like the y-axis in @fig-trade-bars.  Data values are encoded as the shape of text labels just as data values are encoded as the visual features of data symbols. The difference is that absolute values can be decoded from text labels, whereas only relative values can be decoded from data symbols.  A value decoded from the text label is associated with a data symbol, and values decoded from the data symbol, through the proximity of the text label to the data symbol.
+#| fig-alt: A node-and-edge diagram with two columns. The left column represents data symbols, with a line indicating that data values are encoded as visual features of geometric shapes and a dashed line indicating that relative values are decoded from the visual features of geometric shapes. The right column represents guides with a line indicating that data values are encoded as the shape of text and absolute values are decoded from text shape. A dotted line indicates that the relative value from the data symbols is associated with the absolute value from the guide thanks to the proximity of the guide text to the data symbol.
 include_graphics("Diagrams/text-guide.svg")
 ```
 
@@ -342,6 +345,7 @@ partner (in relative terms) in the present day.
 #| echo: FALSE
 #| fig-keep: last
 #| fig-cap: "A bar plot of international trade between New Zealand and its major partners in 2024 with an annotation indicating New Zealand's largest trading partner in 1924."
+#| fig-alt: "The bar plot from @fig-trade-bars with an annotation added: a text label with a line from the text to the bars for the UK.  The purpose of this plot is just to demonstrate an example of an annotation guide."
 ann <- function(data, coords) {
     i <- which(data$y == 4)[2]
     lab <- textGrob("largest trade partner in 1924",
@@ -448,6 +452,7 @@ see @fig-text-geom-guide).
 #| echo: FALSE
 #| out-width: 6.2in
 #| fig.cap: A guide may contain geometric shapes as well as text labels, for example, the legend in @fig-trade-bars.  Data values are encoded as visual features of geometric shapes in the legend just like they are for data symbols. Values decoded from the shapes in a legend, or from text labels associated with those shapes, are associated with the values decoded from data symbols, through the similarity of the shapes in the legend and the shapes in the data symbols.
+#| fig-alt: A node-and-edge diagram with three columns. The left column represents data symbols, with a line indicating that data values are encoded as visual features of geometric shapes and a dashed line indicating that relative values are decoded from the visual features of geometric shapes. The right two columns represent guides, with the middle column repeating the left column, to indicate that geometric shapes in guides work the same as geometric shapes in data symbols, and, in the right column, a line indicating that data values are encoded as the shape of text and absolute values are decoded from text shape. A dotted line indicates that the relative value from the geometric shape in the guide is associated with the absolute value from the text in the guide thanks to the proximity of the text to the geometric shape *and* another dotted line to indicate that the information from the guide is associated with the relative value from the data symbols thanks to the similarity of the geometric shape in the guide to the geometric shape of the data symbol.
 include_graphics("Diagrams/text-geom-guide.svg")
 ```
 
@@ -516,6 +521,7 @@ understanding of how guides work.
 #| results: hide
 #| fig.keep: last
 #| fig.cap: The bar plot from @fig-trade-bars, but with a non-standard legend. The geometric shapes in this legend match the geometric shapes of the data symbols much more closely.
+#| fig-alt: The bar plot from @fig-trade-bars, but with a non-standard legend. The geometric shapes in this legend match the geometric shapes of the data symbols much more closely. Specifically, the bars in the guide have the same height, the same horizontal baseline, and the same vertical order as the data symbol bars.
 ggBarLegend <- ggBar() +
     coord_cartesian(clip="off") +
     theme(legend.text=element_text(colour="white"))
@@ -618,6 +624,7 @@ is actually just a form of direct labelling.
 #| fig.keep: last
 #| results: hide
 #| fig.cap: The bar plot from @fig-trade-bars, but instead of a legend, direct labelling is used to explain the encoding of trade account by placing text labels adjacent to the associated data symbols (proximity), plus colour to associate with other data symbols (similarity).
+#| fig-alt: The bar plot from @fig-trade-bars, but instead of a legend, direct labelling is used to explain the encoding of trade account by placing text labels adjacent to the associated data symbols (proximity), plus colour to associate with other data symbols (similarity).
 directLabel1 <- function(prefix="  ") {
     annotate("text", label=paste0(prefix, "Exports"), 
              size=8, size.unit="pt", fontface="bold",
@@ -730,6 +737,7 @@ data symbols.
 #| fig.keep: last
 #| results: hide
 #| fig.cap: The bar plot from @fig-trade-bars, but with a non-standard x-axis that explains the encoding of trade amount using the lengths of bars.  The geometric shapes in this axis provide a better match of the encoding used for the data symbols.
+#| fig-alt: The bar plot from @fig-trade-bars, but with a non-standard x-axis that consists of bars rather than vertical grid lines.  The geometric shapes in this axis provide a better match of the encoding used for the data symbols.
 exemplars <- seq(5, 15, 5)
 xaxis <- function(data, coords) {
     y <- unit(-1, "mm") - barSize - (0:2)*(barGap - barSize)
@@ -787,6 +795,7 @@ the ordered rectangles used for the data symbols.
 #| results: hide
 #| message: FALSE
 #| fig.cap: The bar plot from @fig-trade-bars-x-axis, but with the x-axis is embedded alongside the data symbols to make length comparisons easier and more accurate.
+#| fig-alt: The bar plot from @fig-trade-bars-x-axis, but with the x-axis bars embedded alongside the data symbols to make length comparisons easier and more accurate. For example, the x-axis bar that represents 5 billion dollars is in between the bars for Australia (imports and exports more than 5 billion dollars) and the bars for Japan (imports and exports less than 5 billion dollars).
 top10xaxis <- rbind(top10, 
                     data.frame(year=2024, 
                                country=as.character(exemplars),
@@ -903,6 +912,7 @@ related data symbol (and *not* too close to unrelated data symbols).
 #| fig.keep: last
 #| results: hide
 #| fig.cap: The bar plot from @fig-trade-bars, but instead of an x-axis, direct labelling explains the encoding of trade amounts by placing labels adjacent to the associated data symbols (proximity).
+#| fig-alt: The bar plot from @fig-trade-bars, but instead of an x-axis, direct labelling explains the encoding of trade amounts by placing labels at the ends of the associated bars (proximity).
 ggBarAxisDirect <- ggBar() +
     geom_text(aes(amount, country, 
                   label=ifelse(amount/1e9 < 10, 
@@ -954,6 +964,7 @@ and the data symbols in this plot are circles, one for each correlation.
 #| results: hide
 #| message: FALSE
 #| fig.cap: Correlations between variables that record physical dimensions, sex, and location of the Palmer Penguins.
+#| fig-alt: A matrix of correlations between variables that record physical dimensions, sex, and location of the Palmer Penguins. Each correlation is represented by a circle with the colour of the circle encoding the direction (blue/red) and strength (chroma/luminance) of the correlation. The legend is a gradient of colours from dark blue for a correlation of 1, through light grey for a correlation of zero, to dark red for a correlation of -1.
 vars <- c("bill_dep", "bill_len", "flipper_len", "body_mass", "sex", "island")
 labels <- c(bill_dep="bill\ndepth", 
             bill_len="bill\nlength",
@@ -1091,6 +1102,7 @@ of differences and ratios
 #| results: hide
 #| message: FALSE
 #| fig.cap: The correlation matrix from @fig-corr-mats-penguin, but with a novel legend that explains the encoding of correlation using circles that match the data symbols.
+#| fig-alt: The correlation matrix from @fig-corr-mats-penguin, but with a novel legend that consists of a discrete set of circles of different colours corresponding to different correlation strengths (rather than a colour gradient). These legend circles match the size and shape of the data symbol circles to make it easier to compare the data symbols to the correlation values in the legend.
 cols <- diverging_hcl(5, palette="Blue-Red", rev=TRUE)
 textlab <- round(seq(-1, 1, length.out=5), 2)
 legendDot <- function(y, i) {
@@ -1165,6 +1177,7 @@ or even entertaining
 #| echo: FALSE
 #| out-width: 2.1in
 #| fig.cap: A guide may consist only of text labels and need no association with data symbols, for example, the title in @fig-trade-bars.  In this case, the value of the guide comes directly from being able to decode absolute information (about the data visualisation as a whole) from the text label.
+#| fig-alt: A node-and-edge diagram with one column. A line indicates that, in title guides, data values are encoded as text shapes and absolute values can be decoded from the text. There are no geometric shapes, nor associations with data symbols, involved in this sort of guide.
 include_graphics("Diagrams/text-standalone.svg")
 ```
 
@@ -1272,6 +1285,7 @@ and absolute values are associated with ratio values through
 #| echo: FALSE
 #| out-width: 100%
 #| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990theory.  This adaptation restores the original "message flags" from @Pinker1990theory that show how absolute values from text labels are associated with relative values from geometric shapes.
+#| fig-alt: A node-and-edge diagram adapted from Figure 4.20 of @Pinker1990theory. There is a large number of nodes and edges, with a relatively complex arrangement, but this diagram expresses many similar ideas to the diagram in @fig-text-geom-guide, albeit with considerably more complexity.
 include_graphics("Pinker/pinker.svg")
 ```
 
