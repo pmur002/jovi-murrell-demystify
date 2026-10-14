@@ -32,7 +32,6 @@ jobs:
             any::xml2
             any::reshape2
             any::dplyr
-            any::grid
             any::scales
             any::ggplot2
             any::gggrid
