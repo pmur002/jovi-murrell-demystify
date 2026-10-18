@@ -1,5 +1,5 @@
 ---
-title: "Demythologizing the Legend"
+title: "Demystifying the Legend"
 author: 
   - name: Paul Murrell
     orcid: 0000-0002-3224-8858
