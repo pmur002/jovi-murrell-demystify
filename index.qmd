@@ -708,7 +708,8 @@ rather than comparing the lengths of bar data symbols with the positions
 of grid lines in the x-axis.
 
 We should acknowledge that there *is* a significant visual difference between
-the x-axis bars and the data symbol bars because the x-axis
+the x-axis bars and the data symbol bars 
+in @fig-trade-bars-x-axis because the x-axis
 bars are grey whereas the data symbol bars are teal or salmon.
 This difference is necessary in order to differentiate the bars for the
 x-axis from the bars for the data symbols.
