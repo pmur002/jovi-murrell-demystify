@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.32">
+<meta name="generator" content="quarto-1.10.19">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -10,10 +10,16 @@
 
 <title>Demythologizing the Legend</title>
 <style>
-code{white-space: pre-wrap;}
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -25,7 +31,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -51,10 +56,10 @@ div.csl-indent {
 <script src="index_files/libs/quarto-html/tippy.umd.min.js"></script>
 <script src="index_files/libs/quarto-html/anchor.min.js"></script>
 <link href="index_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="index_files/libs/quarto-html/quarto-syntax-highlighting-bf27225e3a48a9273f3daa8f8e829971.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="index_files/libs/bootstrap/bootstrap.min.js"></script>
 <link href="index_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="index_files/libs/bootstrap/bootstrap-100804dc06b694e147c50214dab648c1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="index_files/libs/bootstrap/bootstrap-7de81ba4d6be9be3cb0f3c693f398f69.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
 
 </head>
@@ -103,7 +108,7 @@ div.csl-indent {
   <div class="quarto-title-meta-heading">Affiliation</div>
   
     <div class="quarto-title-meta-contents">
-    <p class="author">Paul Murrell <a href="mailto:paul@stat.auckland.ac.nz" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-3224-8858" class="quarto-title-author-orcid"> <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
+    <p class="author">Paul Murrell <a href="mailto:paul@stat.auckland.ac.nz" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> <a href="https://orcid.org/0000-0002-3224-8858" class="quarto-title-author-orcid" aria-label="ORCID profile for Paul Murrell"> <img alt="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA2ZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOk9yaWdpbmFsRG9jdW1lbnRJRD0ieG1wLmRpZDo1N0NEMjA4MDI1MjA2ODExOTk0QzkzNTEzRjZEQTg1NyIgeG1wTU06RG9jdW1lbnRJRD0ieG1wLmRpZDozM0NDOEJGNEZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wTU06SW5zdGFuY2VJRD0ieG1wLmlpZDozM0NDOEJGM0ZGNTcxMUUxODdBOEVCODg2RjdCQ0QwOSIgeG1wOkNyZWF0b3JUb29sPSJBZG9iZSBQaG90b3Nob3AgQ1M1IE1hY2ludG9zaCI+IDx4bXBNTTpEZXJpdmVkRnJvbSBzdFJlZjppbnN0YW5jZUlEPSJ4bXAuaWlkOkZDN0YxMTc0MDcyMDY4MTE5NUZFRDc5MUM2MUUwNEREIiBzdFJlZjpkb2N1bWVudElEPSJ4bXAuZGlkOjU3Q0QyMDgwMjUyMDY4MTE5OTRDOTM1MTNGNkRBODU3Ii8+IDwvcmRmOkRlc2NyaXB0aW9uPiA8L3JkZjpSREY+IDwveDp4bXBtZXRhPiA8P3hwYWNrZXQgZW5kPSJyIj8+84NovQAAAR1JREFUeNpiZEADy85ZJgCpeCB2QJM6AMQLo4yOL0AWZETSqACk1gOxAQN+cAGIA4EGPQBxmJA0nwdpjjQ8xqArmczw5tMHXAaALDgP1QMxAGqzAAPxQACqh4ER6uf5MBlkm0X4EGayMfMw/Pr7Bd2gRBZogMFBrv01hisv5jLsv9nLAPIOMnjy8RDDyYctyAbFM2EJbRQw+aAWw/LzVgx7b+cwCHKqMhjJFCBLOzAR6+lXX84xnHjYyqAo5IUizkRCwIENQQckGSDGY4TVgAPEaraQr2a4/24bSuoExcJCfAEJihXkWDj3ZAKy9EJGaEo8T0QSxkjSwORsCAuDQCD+QILmD1A9kECEZgxDaEZhICIzGcIyEyOl2RkgwAAhkmC+eAm0TAAAAABJRU5ErkJggg=="></a></p>
   </div>
   <div class="quarto-title-meta-contents">
         <p class="affiliation">
@@ -130,7 +135,7 @@ div.csl-indent {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Abstract
+<span class="screen-reader-only">Note</span>Abstract
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -152,12 +157,12 @@ Abstract
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Authorship, License, Conflicts
+<span class="screen-reader-only">Note</span>Authorship, License, Conflicts
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -295,7 +300,7 @@ Figure&nbsp;5: A guide may contain geometric shapes as well as text labels, for 
 </div>
 <section id="improving-a-legend" class="level3">
 <h3 class="anchored" data-anchor-id="improving-a-legend">Improving a legend</h3>
-<p>We have identified that the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> works thanks to Gestalt similarity. The bar data symbols are automatically associated with the rectangles in the legend that have the same colour. However, that grouping by similar colours is most effective when the shapes being compared are otherwise the same <em>and</em> when there is less complexity overall <span class="citation" data-cites="carpenter1998model Yu09082015 YU20198">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>; <a href="#ref-Yu09082015" role="doc-biblioref">Yu and Franconeri 2015</a>; <a href="#ref-YU20198" role="doc-biblioref">Yu, Tam, and Franconeri 2019</a>)</span>.</p>
+<p>We have identified that the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> works thanks to Gestalt similarity. The bar data symbols are automatically associated with the rectangles in the legend that have the same colour. However, that grouping by similar colours is most effective when the shapes being compared are otherwise the same <em>and</em> when there is less complexity overall <span class="citation" data-cites="carpenter1998model Yu09082015 YU20198">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>; <a href="#ref-Yu09082015" role="doc-biblioref">Yu and Franconeri 2015</a>; <a href="#ref-YU20198" role="doc-biblioref">Yu et al. 2019</a>)</span>.</p>
 <p>This leads to the conclusion that we should make the geometric shapes in the legend as similar as possible to the geometric shapes in the data symbols.</p>
 <p>On one hand, this is an unsurprising result. The purpose of a guide is to explain or demonstrate the encoding of data symbols, so the encoding of geometric shapes in the guide should match the encoding of geometric shapes in the data symbols. This is what the legend in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> does: the encoding of rectangle colour in the legend matches the encoding of rectangle colour in the data symbols.</p>
 <p>However, a more strict interpretation says that there should be encodings within a guide that match the encodings used for data symbols <em>and there should be no other encodings</em>. Furthermore, a strict interpretation of “no other encodings” includes implicit or unintentional encodings—visual differences that are noticeable even though they have no explicit connection to differences in the data <span class="citation" data-cites="wolfe-horowitz">(<a href="#ref-wolfe-horowitz" role="doc-biblioref">Wolfe and Horowitz 2017</a>)</span>.</p>
@@ -346,7 +351,7 @@ Figure&nbsp;7: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">F
 <p>We can associate the trade amounts from the x-axis labels with the grid lines due to their proximity to each other (just as we associate labels with rectangles in the legend) and we can compare the lengths of the bar data symbols to the grid lines to associate bar length differences and ratios with actual trade amounts. The latter step is similar to the second step in how a legend works because it involves comparing geometric shapes, even if in this case it is comparing lengths for differences rather than comparing colours for similarity as in the legend (see <a href="#fig-text-geom-guide" class="quarto-xref">Figure&nbsp;5</a>).</p>
 <p>The main point is that the x-axis works in two steps, like the legend, which means that we can modify the x-axis using the same idea that we used to modify the legend in <a href="#fig-trade-bars-legend" class="quarto-xref">Figure&nbsp;6</a>. Specifically, we can make the geometric shapes in the x-axis as similar as possible to the geometric shapes used for the data symbols, except for the encoded differences.</p>
 <p><a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;8</a> implements that approach for the bar plot in <a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;7</a>. In <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;8</a>, the x-axis consists of the same labels as before, but the geometric shapes on the x-axis are now rectangles. Now, the encoding of the geometric shapes in the guide (lengths of rectangles) matches the encoding of the geometric shapes used for the data symbols (also lengths of rectangles). Furthermore, in addition to the obvious choice of aligning the left edge of the rectangles in the guide with the left edge of the rectangle data symbols, we have set the heights of the rectangles in the guide to be the same as the heights of the rectangle data symbols. In summary, we are now able to compare the lengths of bar data symbols with the lengths of bars in the x-axis, rather than comparing the lengths of bar data symbols with the positions of grid lines in the x-axis.</p>
-<p>We should acknowledge that there <em>is</em> a significant visual difference between the x-axis bars and the data symbol bars because the x-axis bars are grey whereas the data symbol bars are teal or salmon. This difference is necessary in order to differentiate the bars for the x-axis from the bars for the data symbols. In effect, the use of grey versus teal/salmon encodes the categorical information that some bars are for the x-axis and some bars are data symbols.</p>
+<p>We should acknowledge that there <em>is</em> a significant visual difference between the x-axis bars and the data symbol bars in <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;8</a> because the x-axis bars are grey whereas the data symbol bars are teal or salmon. This difference is necessary in order to differentiate the bars for the x-axis from the bars for the data symbols. In effect, the use of grey versus teal/salmon encodes the categorical information that some bars are for the x-axis and some bars are data symbols.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-trade-bars-x-axis" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The bar plot from @fig-trade-bars, but with a non-standard x-axis that consists of bars rather than vertical grid lines.  The geometric shapes in this axis provide a better match of the encoding used for the data symbols.">
@@ -361,7 +366,7 @@ Figure&nbsp;8: The bar plot from <a href="#fig-trade-bars" class="quarto-xref">F
 </div>
 </div>
 </div>
-<p>One problem with <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;8</a> is that it is more difficult to compare the rectangles in the data symbols with the rectangles in the x-axis thanks to the vertical distance between the rectangles <span class="citation" data-cites="lu2021modeling talbot2014four">(<a href="#ref-lu2021modeling" role="doc-biblioref">Lu et al. 2021</a>; <a href="#ref-talbot2014four" role="doc-biblioref">Talbot, Setlur, and Anand 2014</a>)</span>. <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;9</a> applies a further modification, abandoning the traditional position of the x-axis at the bottom of the plot and placing the guide rectangles amongst the ordered rectangles used for the data symbols.</p>
+<p>One problem with <a href="#fig-trade-bars-x-axis" class="quarto-xref">Figure&nbsp;8</a> is that it is more difficult to compare the rectangles in the data symbols with the rectangles in the x-axis thanks to the vertical distance between the rectangles <span class="citation" data-cites="lu2021modeling talbot2014four">(<a href="#ref-lu2021modeling" role="doc-biblioref">Lu et al. 2021</a>; <a href="#ref-talbot2014four" role="doc-biblioref">Talbot et al. 2014</a>)</span>. <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;9</a> applies a further modification, abandoning the traditional position of the x-axis at the bottom of the plot and placing the guide rectangles amongst the ordered rectangles used for the data symbols.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-trade-bars-x-axis-embedded" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The bar plot from @fig-trade-bars-x-axis, but with the x-axis bars embedded alongside the data symbols to make length comparisons easier and more accurate. For example, the x-axis bar that represents 5 billion dollars is in between the bars for Australia (imports and exports more than 5 billion dollars) and the bars for Japan (imports and exports less than 5 billion dollars).">
@@ -377,7 +382,7 @@ Figure&nbsp;9: The bar plot from <a href="#fig-trade-bars-x-axis" class="quarto-
 </div>
 </div>
 <p>In <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;9</a>, compared to <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, our analysis of how guides work has essentially lead us to replace the original legend with a second y-axis and to replace the original x-axis with a new (embedded) legend. Again, it is difficult to claim that <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;9</a> is in all ways superior to <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a>, but <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;9</a> does demonstrate that a deeper understanding of how guides work can lead us to consider some novel approaches to generating guides.</p>
-<p>Another reason why the standard x-axis works in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is because viewers are very used to seeing a guide like this on a data visualisation <span class="citation" data-cites="tsai2026pictorial">(<a href="#ref-tsai2026pictorial" role="doc-biblioref">Tsai, Hahn, and Siegler 2026</a>)</span>. <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;9</a> is at a disadvantage in this regard because viewers are not used to seeing an embedded x-axis.</p>
+<p>Another reason why the standard x-axis works in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> is because viewers are very used to seeing a guide like this on a data visualisation <span class="citation" data-cites="tsai2026pictorial">(<a href="#ref-tsai2026pictorial" role="doc-biblioref">Tsai et al. 2026</a>)</span>. <a href="#fig-trade-bars-x-axis-embedded" class="quarto-xref">Figure&nbsp;9</a> is at a disadvantage in this regard because viewers are not used to seeing an embedded x-axis.</p>
 <p>Before we leave the x-axis, we must acknowledge the alternative approach that we used to improve the legend in <a href="#fig-trade-bars-direct" class="quarto-xref">Figure&nbsp;7</a>: instead of attempting to improve the second step, we can just remove the second step by using direct labelling.</p>
 <p><a href="#fig-trade-bars-x-axis-direct" class="quarto-xref">Figure&nbsp;10</a> shows a version of our bar plot with all trade amounts encoded as text labels directly beside each bar. Although we are now able to decode trade amounts from the shape of text labels and associate those trade amounts with bars simply by the proximity of the text labels to the bars, the large number of text labels makes it more difficult to compare the bars themselves. <a href="#fig-trade-bars-x-axis-direct" class="quarto-xref">Figure&nbsp;10</a> demonstrates that direct labelling is not always a good option, essentially due to the clutter that it creates <span class="citation" data-cites="show-or-tell ajani2021declutter">(<a href="#ref-show-or-tell" role="doc-biblioref">Hearst 2023</a>; <a href="#ref-ajani2021declutter" role="doc-biblioref">Ajani et al. 2022</a>)</span>. In essence, an important limitation of direct labelling is that it becomes impossible to place multiple labels directly next to the related data symbol (and <em>not</em> too close to unrelated data symbols).</p>
 <div class="cell">
@@ -418,7 +423,7 @@ Figure&nbsp;11: Correlations between variables that record physical dimensions, 
 <p>However, in the legend in <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;11</a>, there is a much more obvious difference between the geometric shapes in the legend and the geometric shapes in the data symbols. The geometric shapes in the legend make up a vertical colour gradient—we can think of the colour gradient as a stack of very thin horizontal lines, each with a slightly different colour. These are very different to the geometric shapes used for the data symbols, which are circle shapes that are filled with different colours.</p>
 <p>An additional issue in the case of <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;11</a> is the fact that colour perception is sensitive both to neighbouring colours and the size of the coloured region. The data symbol circles are relatively large regions of colour, but the horizontal lines in the legend are much smaller (very narrow) regions of colour, plus they all have another, very similar colour directly adjacent to them. This makes precise matching of colours more difficult <span class="citation" data-cites="10.1109/MCG.2012.37 ware2020information">(<a href="#ref-10.1109/MCG.2012.37" role="doc-biblioref">Stone 2012</a>; <a href="#ref-ware2020information" role="doc-biblioref">Ware 2020</a>)</span>.</p>
 <p><a href="#fig-corr-mats-penguin-geom" class="quarto-xref">Figure&nbsp;12</a> demonstrates an alternative to <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;11</a>, with a legend that makes use of geometric shapes that match the data symbols. In <a href="#fig-corr-mats-penguin-geom" class="quarto-xref">Figure&nbsp;12</a>, the crucial step of comparing the visual features (colour) of geometric shapes in the legend to the visual features of geometric shapes in the data symbols is more effective, compared to <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;11</a>, because the geometric shapes in the legend and in the data symbols are the same size and shape and, in both cases, the circles are surrounded by a white background. At least some tasks, for example identifying which correlations are larger than 0.5, are easier to perform with the new legend.</p>
-<p>It is worth noting that the new legend in <a href="#fig-corr-mats-penguin-geom" class="quarto-xref">Figure&nbsp;12</a> is also now more similar to the x-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> because there is just a selection of data values encoded as geometric shapes in the legend (rather than an attempt to encode all possible data values as geometric shapes in the legend of <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;11</a>). Whereas <em>qualitative</em> guides can encode every possible data value, <em>quantitative</em> guides select a “nice” regular subset of values that support simple comparisons and simple calculations of differences and ratios <span class="citation" data-cites="Heckbert1990Nice talbot2010extension">(<a href="#ref-Heckbert1990Nice" role="doc-biblioref">Heckbert 1990</a>; <a href="#ref-talbot2010extension" role="doc-biblioref">Talbot, Lin, and Hanrahan 2010</a>)</span>.</p>
+<p>It is worth noting that the new legend in <a href="#fig-corr-mats-penguin-geom" class="quarto-xref">Figure&nbsp;12</a> is also now more similar to the x-axis in <a href="#fig-trade-bars" class="quarto-xref">Figure&nbsp;1</a> because there is just a selection of data values encoded as geometric shapes in the legend (rather than an attempt to encode all possible data values as geometric shapes in the legend of <a href="#fig-corr-mats-penguin" class="quarto-xref">Figure&nbsp;11</a>). Whereas <em>qualitative</em> guides can encode every possible data value, <em>quantitative</em> guides select a “nice” regular subset of values that support simple comparisons and simple calculations of differences and ratios <span class="citation" data-cites="Heckbert1990Nice talbot2010extension">(<a href="#ref-Heckbert1990Nice" role="doc-biblioref">Heckbert 1990</a>; <a href="#ref-talbot2010extension" role="doc-biblioref">Talbot et al. 2010</a>)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-corr-mats-penguin-geom" class="quarto-float quarto-figure quarto-figure-center anchored" alt="The correlation matrix from @fig-corr-mats-penguin, but with a novel legend that consists of a discrete set of circles of different colours corresponding to different correlation strengths (rather than a colour gradient). These legend circles match the size and shape of the data symbol circles to make it easier to compare the data symbols to the correlation values in the legend.">
@@ -470,7 +475,7 @@ Figure&nbsp;13: A guide may consist only of text labels and need no association 
 <p>The conceptual approach proposed in this article aims to provide a simple model with practical value. It suggests a way of thinking about guides that is easy to comprehend and that is easy to apply.</p>
 <p>However, any simple model will have some limitations. For example, the model contends that only relative values can be decoded from data symbols, but it is possible to use small images or icons as data symbols from which absolute values can be decoded. If we make use of images of a cat and a dog as data symbols to represent two categories then it is possible to decode not just that there are different categories but also that the categories are cats and dogs. So the model proposed in this article is limited to the use of abstract geometric shapes for data symbols.</p>
 <p>Furthermore, the focus of this model is limited to just the extraction of simple information from a data visualisation. The model addresses only one small corner of the general problem of <em>graph comprehension</em> <span class="citation" data-cites="Fox2023">(<a href="#ref-Fox2023" role="doc-biblioref">Fox 2023</a>)</span>.</p>
-<p>Nevertheless, the approach that we have described makes a small contribution to that broader issue. Many theories of graph comprehension emphasise the importance of integrating information that is decoded from data symbols with information that is decoded from guides—“integrative processes that relate these meanings [from graphic patterns] to the referents inferred from labels and titles” <span class="citation" data-cites="carpenter1998model">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>)</span>; “once aggregate visual clusters have been … related to the referents” <span class="citation" data-cites="Ratwani2008ThinkingGC">(<a href="#ref-Ratwani2008ThinkingGC" role="doc-biblioref">Ratwani, Trafton, and Boehm-Davis 2008</a>)</span>; “coordinated processing of pictorial and semantic features” <span class="citation" data-cites="tsai2026pictorial">(<a href="#ref-tsai2026pictorial" role="doc-biblioref">Tsai, Hahn, and Siegler 2026</a>)</span>—but the mechanism by which that integration occurs is assumed rather than made explicit. The approach described in this article provides greater clarity on that integrative process.</p>
+<p>Nevertheless, the approach that we have described makes a small contribution to that broader issue. Many theories of graph comprehension emphasise the importance of integrating information that is decoded from data symbols with information that is decoded from guides—“integrative processes that relate these meanings [from graphic patterns] to the referents inferred from labels and titles” <span class="citation" data-cites="carpenter1998model">(<a href="#ref-carpenter1998model" role="doc-biblioref">Carpenter and Shah 1998</a>)</span>; “once aggregate visual clusters have been … related to the referents” <span class="citation" data-cites="Ratwani2008ThinkingGC">(<a href="#ref-Ratwani2008ThinkingGC" role="doc-biblioref">Ratwani et al. 2008</a>)</span>; “coordinated processing of pictorial and semantic features” <span class="citation" data-cites="tsai2026pictorial">(<a href="#ref-tsai2026pictorial" role="doc-biblioref">Tsai et al. 2026</a>)</span>—but the mechanism by which that integration occurs is assumed rather than made explicit. The approach described in this article provides greater clarity on that integrative process.</p>
 <p>One theory of graph comprehension that does explicitly address the integration of information from data symbols and guides is <span class="citation" data-cites="Pinker1990theory">Pinker (<a href="#ref-Pinker1990theory" role="doc-biblioref">1990</a>)</span>. There are in fact many similarities with the proposal in this article: a data visualisation is divided into a <em>framework</em> (guides) and <em>pictorial material</em> (data symbols); the pictorial material encodes variables as <em>visual attributes</em> (visual features) and the framework consists of both <em>text</em> and <em>geometric shapes</em>; <em>absolute values</em> are decoded from text whereas only <em>ratio values</em> (relative values) are decoded from attributes; and absolute values are associated with ratio values through <em>perceptual grouping</em> (Gestalt grouping; see <a href="#fig-pinker" class="quarto-xref">Figure&nbsp;14</a>).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -502,72 +507,72 @@ Figure&nbsp;14: A theory of graph comprehension adapted from Figure 19.2 of <spa
 </section>
 <section id="references" class="level2 unnumbered">
 <h2 class="unnumbered anchored" data-anchor-id="references">References</h2>
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
 <div id="ref-ajani2021declutter" class="csl-entry" role="listitem">
 Ajani, Kiran, Elsie Lee, Cindy Xiong, Cole Knaflic, William Kemper, and Steven Franconeri. 2022. <span>“Declutter and Focus: Empirically Evaluating Design Guidelines for Effective Data Communication.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 28 (October): 3351–64. <a href="https://doi.org/10.1109/TVCG.2021.3068337">https://doi.org/10.1109/TVCG.2021.3068337</a>.
 </div>
 <div id="ref-bertin1983semiology" class="csl-entry" role="listitem">
-Bertin, Jacques. 1983. <em>Semiology of Graphics: Diagrams, Networks, Maps</em>. Madison, Wisconsin: University of Wisconsin Press.
+Bertin, Jacques. 1983. <em>Semiology of Graphics: Diagrams, Networks, Maps</em>. University of Wisconsin Press.
 </div>
 <div id="ref-brath2020visualizing" class="csl-entry" role="listitem">
-Brath, Richard. 2020. <em>Visualizing with Text</em>. AK Peters Visualization Series. Boca Raton, Florida: CRC Press.
+Brath, Richard. 2020. <em>Visualizing with Text</em>. AK Peters Visualization Series. CRC Press.
 </div>
 <div id="ref-carpenter1998model" class="csl-entry" role="listitem">
 Carpenter, Patricia A., and Priti Shah. 1998. <span>“A Model of the Perceptual and Conceptual Processes in Graph Comprehension.”</span> <em>Journal of Experimental Psychology: Applied</em> 4 (2): 75–100.
 </div>
 <div id="ref-chinwan2025tidydatastructurevisualisations" class="csl-entry" role="listitem">
-Chinwan, Amit, and Catherine B. Hurley. 2025. <span>“A Tidy Data Structure and Visualisations for Multiple Variable Correlations and Other Pairwise Scores.”</span> <a href="https://arxiv.org/abs/2411.19830">https://arxiv.org/abs/2411.19830</a>.
+Chinwan, Amit, and Catherine B. Hurley. 2025. <em>A Tidy Data Structure and Visualisations for Multiple Variable Correlations and Other Pairwise Scores</em>. <a href="https://arxiv.org/abs/2411.19830">https://arxiv.org/abs/2411.19830</a>.
 </div>
 <div id="ref-cleveland1984graphical" class="csl-entry" role="listitem">
 Cleveland, William S., and Robert McGill. 1984. <span>“Graphical Perception: Theory, Experimentation, and Application to the Development of Graphical Methods.”</span> <em>Journal of the American Statistical Association</em> 79 (387): 531–54.
 </div>
 <div id="ref-Fox2023" class="csl-entry" role="listitem">
-Fox, Amy Rae. 2023. <span>“Theories and Models in Graph Comprehension.”</span> In <em>Visualization Psychology</em>, edited by Danielle Albers Szafir, Rita Borgo, Min Chen, Darren J. Edwards, Brian Fisher, and Lace Padilla, 39–64. Cham: Springer International Publishing. <a href="https://doi.org/10.1007/978-3-031-34738-2_2">https://doi.org/10.1007/978-3-031-34738-2_2</a>.
+Fox, Amy Rae. 2023. <span>“Theories and Models in Graph Comprehension.”</span> In <em>Visualization Psychology</em>, edited by Danielle Albers Szafir, Rita Borgo, Min Chen, Darren J. Edwards, Brian Fisher, and Lace Padilla. Springer International Publishing. <a href="https://doi.org/10.1007/978-3-031-34738-2_2">https://doi.org/10.1007/978-3-031-34738-2_2</a>.
 </div>
 <div id="ref-show-or-tell" class="csl-entry" role="listitem">
-Hearst, Marti A. 2023. <span>“Show It or Tell It? <span>Text</span>, Visualization, and Their Combination.”</span> <em>Commun. ACM</em> 66 (10): 6875. <a href="https://doi.org/10.1145/3593580">https://doi.org/10.1145/3593580</a>.
+Hearst, Marti A. 2023. <span>“Show It or Tell It? <span>Text</span>, Visualization, and Their Combination.”</span> <em>Commun. ACM</em> (New York, NY, USA) 66 (10): 6875. <a href="https://doi.org/10.1145/3593580">https://doi.org/10.1145/3593580</a>.
 </div>
 <div id="ref-Heckbert1990Nice" class="csl-entry" role="listitem">
-Heckbert, Paul. 1990. <span>“Nice Numbers for Graph Labels.”</span> In <em>Graphics Gems</em>, edited by Andrew Glassner, 61–63. Boston: Academic Press.
+Heckbert, Paul. 1990. <span>“Nice Numbers for Graph Labels.”</span> In <em>Graphics Gems</em>, edited by Andrew Glassner. Academic Press.
 </div>
 <div id="ref-heer2010crowdsourcing" class="csl-entry" role="listitem">
-Heer, Jeffrey, and Michael Bostock. 2010. <span>“Crowdsourcing Graphical Perception: Using Mechanical Turk to Assess Visualization Design.”</span> In <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>, 203–12. ACM.
+Heer, Jeffrey, and Michael Bostock. 2010. <span>“Crowdsourcing Graphical Perception: Using Mechanical Turk to Assess Visualization Design.”</span> <em>Proceedings of the SIGCHI Conference on Human Factors in Computing Systems</em>, 203–12.
 </div>
 <div id="ref-heer-scales-axes-legends" class="csl-entry" role="listitem">
-Heer, Jeffrey, Dominik Moritz, Jake VanderPlas, and Brock Craft. n.d. <span>“Scales, Axes, and Legends.”</span> <a href="https://idl.uw.edu/visualization-curriculum/altair-scales-axes-legends/">https://idl.uw.edu/visualization-curriculum/altair-scales-axes-legends/</a>.
+Heer, Jeffrey, Dominik Moritz, Jake VanderPlas, and Brock Craft. n.d. <em>Scales, Axes, and Legends</em>. <a href="https://idl.uw.edu/visualization-curriculum/altair-scales-axes-legends/">https://idl.uw.edu/visualization-curriculum/altair-scales-axes-legends/</a>.
 </div>
 <div id="ref-lu2021modeling" class="csl-entry" role="listitem">
-Lu, Min, Joel Lanir, Chufeng Wang, Yucong Yao, Wen Zhang, Oliver Deussen, and Hui Huang. 2021. <span>“Modeling Just Noticeable Differences in Charts.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 28 (1). <a href="https://doi.org/10.1109/TVCG.2021.3114874">https://doi.org/10.1109/TVCG.2021.3114874</a>.
+Lu, Min, Joel Lanir, Chufeng Wang, et al. 2021. <span>“Modeling Just Noticeable Differences in Charts.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 28 (1). <a href="https://doi.org/10.1109/TVCG.2021.3114874">https://doi.org/10.1109/TVCG.2021.3114874</a>.
 </div>
 <div id="ref-mackinlay1986automatic" class="csl-entry" role="listitem">
-Mackinlay, Jock. 1986. <span>“Automating the Design of Graphical Presentations of Relational Information.”</span> <em>ACM Trans. Graph.</em> 5 (2): 110–41. <a href="https://doi.org/10.1145/22949.22950">https://doi.org/10.1145/22949.22950</a>.
+Mackinlay, Jock. 1986. <span>“Automating the Design of Graphical Presentations of Relational Information.”</span> <em>ACM Trans. Graph.</em> (New York, NY, USA) 5 (2): 110–41. <a href="https://doi.org/10.1145/22949.22950">https://doi.org/10.1145/22949.22950</a>.
 </div>
 <div id="ref-xkcd833" class="csl-entry" role="listitem">
-Munroe, Randall. 2010. <span>“Convincing.”</span> <a href="https://xkcd.com/833/" class="uri">https://xkcd.com/833/</a>.
+Munroe, Randall. 2010. <em>Convincing</em>. <a href="https://xkcd.com/833/" class="uri">Https://xkcd.com/833/</a>.
 </div>
 <div id="ref-munzner2014visualization" class="csl-entry" role="listitem">
-Munzner, Tamara. 2014. <em>Visualization Analysis and Design</em>. AK Peters Visualization Series. Boca Raton, FL: CRC Press. <a href="https://doi.org/10.1201/b17511">https://doi.org/10.1201/b17511</a>.
+Munzner, Tamara. 2014. <em>Visualization Analysis and Design</em>. AK Peters Visualization Series. CRC Press. <a href="https://doi.org/10.1201/b17511">https://doi.org/10.1201/b17511</a>.
 </div>
 <div id="ref-Murrell_2026" class="csl-entry" role="listitem">
 Murrell, Paul. 2026. <span>“What Is Text Doing in a Data Visualisation?”</span> <em>Journal of Data Science, Statistics, and Visualisation</em> 6 (3). <a href="https://doi.org/10.52933/jdssv.v6i3.172">https://doi.org/10.52933/jdssv.v6i3.172</a>.
 </div>
 <div id="ref-ONS-service-manual-dataviz" class="csl-entry" role="listitem">
-Office for National Statistics. n.d. <span>“Data Visualisation – <span>ONS</span> Service Manual.”</span> <a href="https://service-manual.ons.gov.uk/data-visualisation">https://service-manual.ons.gov.uk/data-visualisation</a>.
+Office for National Statistics. n.d. <em>Data Visualisation – <span>ONS</span> Service Manual</em>. <a href="https://service-manual.ons.gov.uk/data-visualisation">https://service-manual.ons.gov.uk/data-visualisation</a>.
 </div>
 <div id="ref-Pinker1990theory" class="csl-entry" role="listitem">
-Pinker, Steven. 1990. <span>“A Theory of Graph Comprehension.”</span> In <em>Artificial Intelligence and the Future of Testing</em>, 73–126.
+Pinker, Steven. 1990. <span>“A Theory of Graph Comprehension.”</span> <em>Artificial Intelligence and the Future of Testing</em>, 73–126.
 </div>
 <div id="ref-Rlang" class="csl-entry" role="listitem">
-R Core Team. 2026. <em>R: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://doi.org/10.32614/R.manuals">https://doi.org/10.32614/R.manuals</a>.
+R Core Team. 2026. <em>R: A Language and Environment for Statistical Computing</em>. R Foundation for Statistical Computing. <a href="https://doi.org/10.32614/R.manuals">https://doi.org/10.32614/R.manuals</a>.
 </div>
 <div id="ref-Ratwani2008ThinkingGC" class="csl-entry" role="listitem">
 Ratwani, Raj M., J. Gregory Trafton, and Deborah A. Boehm-Davis. 2008. <span>“Thinking Graphically: Connecting Vision and Cognition During Graph Comprehension.”</span> <em>Journal of Experimental Psychology. Applied</em> 14 (1): 36–49.
 </div>
 <div id="ref-10.1109/MCG.2012.37" class="csl-entry" role="listitem">
-Stone, Maureen. 2012. <span>“In Color Perception, Size Matters.”</span> <em>IEEE Comput. Graph. Appl.</em> 32 (2): 8–13. <a href="https://doi.org/10.1109/MCG.2012.37">https://doi.org/10.1109/MCG.2012.37</a>.
+Stone, Maureen. 2012. <span>“In Color Perception, Size Matters.”</span> <em>IEEE Comput. Graph. Appl.</em> (Washington, DC, USA) 32 (2): 8–13. <a href="https://doi.org/10.1109/MCG.2012.37">https://doi.org/10.1109/MCG.2012.37</a>.
 </div>
 <div id="ref-talbot2010extension" class="csl-entry" role="listitem">
-Talbot, Justin, Sharon Lin, and Pat Hanrahan. 2010. <span>“An Extension of Wilkinson’s Algorithm for Positioning Tick Labels on Axes.”</span> In <em>IEEE Transactions on Visualization and Computer Graphics</em>, 16:1036–43. 6. IEEE.
+Talbot, Justin, Sharon Lin, and Pat Hanrahan. 2010. <span>“An Extension of Wilkinson’s Algorithm for Positioning Tick Labels on Axes.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 16: 1036–43.
 </div>
 <div id="ref-talbot2014four" class="csl-entry" role="listitem">
 Talbot, Justin, Vidya Setlur, and Anushka Anand. 2014. <span>“Four Experiments on the Perception of Bar Charts.”</span> <em>IEEE Transactions on Visualization and Computer Graphics</em> 20 (12). <a href="https://doi.org/10.1109/TVCG.2014.2346320">https://doi.org/10.1109/TVCG.2014.2346320</a>.
@@ -576,19 +581,19 @@ Talbot, Justin, Vidya Setlur, and Anushka Anand. 2014. <span>“Four Experiments
 Tsai, Evelyn Hsin-I, Yoojin Hahn, and Robert S. Siegler. 2026. <span>“The Pictorial–Semantic–Task Framework for Understanding Graph Comprehension.”</span> <em>Journal of Intelligence</em> 14 (2): 28. <a href="https://doi.org/10.3390/jintelligence14020028">https://doi.org/10.3390/jintelligence14020028</a>.
 </div>
 <div id="ref-tufte2006beautiful" class="csl-entry" role="listitem">
-Tufte, Edward R. 2006. <em>Beautiful Evidence</em>. Cheshire, CT: Graphics Press.
+Tufte, Edward R. 2006. <em>Beautiful Evidence</em>. Graphics Press.
 </div>
 <div id="ref-wagemans2012gestalt" class="csl-entry" role="listitem">
-Wagemans, Johan, James H Elder, Michael Kubovy, Stephen E Palmer, Mary A Peterson, Manish Singh, and Rüdiger von der Heydt. 2012. <span>“A Century of Gestalt Psychology in Visual Perception: I. <span>P</span>erceptual Grouping and Figure–Ground Organization.”</span> <em>Psychological Bulletin</em> 138 (6): 1172–1217. <a href="https://doi.org/10.1037/a0029333">https://doi.org/10.1037/a0029333</a>.
+Wagemans, Johan, James H Elder, Michael Kubovy, et al. 2012. <span>“A Century of Gestalt Psychology in Visual Perception: I. <span>P</span>erceptual Grouping and Figure–Ground Organization.”</span> <em>Psychological Bulletin</em> 138 (6): 1172–217. <a href="https://doi.org/10.1037/a0029333">https://doi.org/10.1037/a0029333</a>.
 </div>
 <div id="ref-ware2020information" class="csl-entry" role="listitem">
-Ware, Colin. 2020. <em>Information Visualization: Perception for Design</em>. 4th ed. San Francisco: Morgan Kaufmann.
+Ware, Colin. 2020. <em>Information Visualization: Perception for Design</em>. 4th ed. Morgan Kaufmann.
 </div>
 <div id="ref-Weber2026WhyText" class="csl-entry" role="listitem">
-Weber, Wibke. 2026. <span>“Why Text Matters in Data Visualization: Exploring the Text-Image Relationship.”</span> In <em>Information Design: Design for Engagement</em>, edited by Yvonne Eriksson, 88–111. Boca Raton, FL, USA: CRC Press.
+Weber, Wibke. 2026. <span>“Why Text Matters in Data Visualization: Exploring the Text-Image Relationship.”</span> In <em>Information Design: Design for Engagement</em>, edited by Yvonne Eriksson. CRC Press.
 </div>
 <div id="ref-wilkinson2005grammar" class="csl-entry" role="listitem">
-Wilkinson, Leland. 2005. <em>The Grammar of Graphics</em>. 2nd ed. Statistics and Computing. New York: Springer. <a href="https://doi.org/10.1007/0-387-28695-0">https://doi.org/10.1007/0-387-28695-0</a>.
+Wilkinson, Leland. 2005. <em>The Grammar of Graphics</em>. 2nd ed. Statistics and Computing. Springer. <a href="https://doi.org/10.1007/0-387-28695-0">https://doi.org/10.1007/0-387-28695-0</a>.
 </div>
 <div id="ref-wolfe-horowitz" class="csl-entry" role="listitem">
 Wolfe, Jeremy M, and Todd S Horowitz. 2017. <span>“Five Factors That Guide Attention in Visual Search.”</span> <em>Nature Human Behaviour</em> 1 (3). <a href="https://doi.org/10.1038/s41562-017-0058">https://doi.org/10.1038/s41562-017-0058</a>.
@@ -655,13 +660,14 @@ Yu, Dian, Derek Tam, and Steven L. Franconeri. 2019. <span>“Gestalt Similarity
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
