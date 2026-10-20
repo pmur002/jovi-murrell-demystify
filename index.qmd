@@ -867,7 +867,7 @@ to generating guides.
 
 Another reason why the standard x-axis works in @fig-trade-bars
 is because viewers are very used to seeing a guide like this
-on a data visualisation [@tsai2026pictorial].
+in a data visualisation [@tsai2026pictorial].
 @fig-trade-bars-x-axis-embedded is at a disadvantage in this regard
 because viewers are not used to seeing an embedded x-axis.
 
@@ -1323,8 +1323,7 @@ using the following packages:
 and
 **scales**.
 
-Thanks to Christina Murrell for valuable feedback on draft versions
-of this article.
+Thanks to Christina Murrell for valuable feedback and discussions.
 
 ## References {.unnumbered}
 
