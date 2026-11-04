@@ -1271,21 +1271,14 @@ the framework consists of both *text* and *geometric shapes*;
 *absolute values* are decoded from text whereas only
 *ratio values* (relative values) are decoded from attributes;
 and absolute values are associated with ratio values through
-*perceptual grouping* (Gestalt grouping; see @fig-pinker).
-
-```{r}
-#| label: fig-pinker
-#| echo: FALSE
-#| out-width: 100%
-#| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990theory.  This adaptation restores the original "message flags" from @Pinker1990theory that show how absolute values from text labels are associated with relative values from geometric shapes.
-#| fig-alt: A node-and-edge diagram adapted from Figure 4.20 of @Pinker1990theory. There is a large number of nodes and edges, with a relatively complex arrangement, but this diagram expresses many similar ideas to the diagram in @fig-text-geom-guide, albeit with considerably more complexity.
-include_graphics("Pinker/pinker.svg")
-```
+*perceptual grouping* (Gestalt grouping; see Figure 4.20 of 
+@Pinker1990theory).
 
 One contribution of the proposal in this article is its relative
 simplicity.
 For example, 
-it requires some effort to establish that @fig-pinker is
+it requires some effort to establish that Figure 4.20 from
+@Pinker1990theory is
 addressing the same problem as @fig-text-geom-guide.
 A second contribution is the stricter interpretation of the
 mechanism for associating geometric shapes in legends with

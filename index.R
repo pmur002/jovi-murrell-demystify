@@ -531,12 +531,3 @@ grid.remove("guide-box-right", grep=TRUE)
 #| fig-alt: A node-and-edge diagram with one column. A line indicates that, in title guides, data values are encoded as text shapes and absolute values can be decoded from the text. There are no geometric shapes, nor associations with data symbols, involved in this sort of guide.
 include_graphics("Diagrams/text-standalone.svg")
 
-
-## -----------------------------------------------------------------------------
-#| label: fig-pinker
-#| echo: FALSE
-#| out-width: 100%
-#| fig.cap: A theory of graph comprehension adapted from Figure 19.2 of @wilkinson2005grammar, which was adapted from Figure 4.20 of @Pinker1990theory.  This adaptation restores the original "message flags" from @Pinker1990theory that show how absolute values from text labels are associated with relative values from geometric shapes.
-#| fig-alt: A node-and-edge diagram adapted from Figure 4.20 of @Pinker1990theory. There is a large number of nodes and edges, with a relatively complex arrangement, but this diagram expresses many similar ideas to the diagram in @fig-text-geom-guide, albeit with considerably more complexity.
-include_graphics("Pinker/pinker.svg")
-
