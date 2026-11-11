@@ -95,7 +95,7 @@ grid.text("proximity", y=unit(.5, "npc") + unit(-1, "mm"), vjust=1,
           gp=gpar(fontsize=10))
 popViewport()
 pushViewport(viewport(layout.pos.col=2:3, layout.pos.row=5))
-grid.text("similarity", y=unit(.5, "npc") + unit(-1, "mm"), vjust=1,
+grid.text("compare", y=unit(.5, "npc") + unit(-1, "mm"), vjust=1,
           gp=gpar(fontsize=10))
 popViewport()
 

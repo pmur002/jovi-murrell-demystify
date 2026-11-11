@@ -427,7 +427,11 @@ like the legend.
 Of course, the legend is not intended to be used in isolation.
 We need to associate the information from the legend with the bar
 data symbols.
-The information that we decode from the legend can be associated with
+This is a comparison task, but because the information that we
+are decoding is qualitative, it reduces to a simple matching task---which
+bar data symbol matches which rectangle in the legend.
+This means that
+the information that we decode from the legend can be associated with
 the bar data symbols through Gestalt grouping again,
 in this case via the *similarity* of the colours 
 [@wagemans2012gestalt];
@@ -443,8 +447,8 @@ see @fig-text-geom-guide).
 #| label: fig-text-geom-guide
 #| echo: FALSE
 #| out-width: 6.2in
-#| fig.cap: A guide may contain geometric shapes as well as text labels, for example, the legend in @fig-trade-bars.  Data values are encoded as visual features of geometric shapes in the legend just like they are for data symbols. Values decoded from the shapes in a legend, or from text labels associated with those shapes, are associated with the values decoded from data symbols, through the similarity of the shapes in the legend and the shapes in the data symbols.
-#| fig-alt: A node-and-edge diagram with three columns. The left column represents data symbols, with a line indicating that data values are encoded as visual features of geometric shapes and a dashed line indicating that relative values are decoded from the visual features of geometric shapes. The right two columns represent guides, with the middle column repeating the left column, to indicate that geometric shapes in guides work the same as geometric shapes in data symbols, and, in the right column, a line indicating that data values are encoded as the shape of text and absolute values are decoded from text shape. A dotted line indicates that the relative value from the geometric shape in the guide is associated with the absolute value from the text in the guide thanks to the proximity of the text to the geometric shape *and* another dotted line to indicate that the information from the guide is associated with the relative value from the data symbols thanks to the similarity of the geometric shape in the guide to the geometric shape of the data symbol.
+#| fig.cap: A guide may contain geometric shapes as well as text labels, for example, the legend in @fig-trade-bars.  Data values are encoded as visual features of geometric shapes in the legend just like they are for data symbols. Values decoded from the shapes in a guide, or from text labels associated with those shapes, are associated with the values decoded from data symbols, by comparing the shapes in the guide with the shapes in the data symbols.
+#| fig-alt: A node-and-edge diagram with three columns. The left column represents data symbols, with a line indicating that data values are encoded as visual features of geometric shapes and a dashed line indicating that relative values are decoded from the visual features of geometric shapes. The right two columns represent guides, with the middle column repeating the left column, to indicate that geometric shapes in guides work the same as geometric shapes in data symbols, and, in the right column, a line indicating that data values are encoded as the shape of text and absolute values are decoded from text shape. A dotted line indicates that the relative value from the geometric shape in the guide is associated with the absolute value from the text in the guide thanks to the proximity of the text to the geometric shape *and* another dotted line to indicate that the information from the guide is associated with the relative value from the data symbols by comparing the geometric shape in the guide to the geometric shape of the data symbol.
 include_graphics("Diagrams/text-geom-guide.svg")
 ```
 
@@ -597,7 +601,10 @@ plus Gestalt proximity, to
 group a bar with its corresponding label
 (see @fig-text-guide).
 There is no longer any need to compare a geometric shape in the guide with
-the geometric shapes of the data symbols [@carpenter1998model].
+the geometric shapes of the data symbols.
+In addition, there is a reduced memory load because we no longer
+have to scan backwards and forwards between the legend and the data
+symbols [@carpenter1998model].
 This approach is sometimes called *direct labelling* [@tufte2006beautiful].
 
 In @fig-trade-bars-direct, we have also encoded the 
@@ -683,13 +690,16 @@ the grid lines due to their proximity to each other
 can compare the lengths of the bar data symbols to the grid lines
 to associate bar length differences and ratios with actual trade amounts.
 The latter step is similar to the second step in how a legend works
-because it involves comparing geometric shapes, even if
-in this case it is comparing lengths for differences rather than
-comparing colours for similarity as in the legend
+because it involves comparing geometric shapes
 (see @fig-text-geom-guide).
+Furthermore, the comparison will be easier if there are
+fewer differences between the geometric shapes that we are comparing
+[@gleicher-comparison].
 
-The main point is that the x-axis works in two steps, like the legend,
-which means that we can modify the x-axis using 
+The main point is that the x-axis works in two steps, just like the legend,
+and the second step involves a comparison between geometric shapes,
+just like the legend.
+This means that we can modify the x-axis using 
 the same idea that we used to modify 
 the legend in @fig-trade-bars-legend.
 Specifically, we can
