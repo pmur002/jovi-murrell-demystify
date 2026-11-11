@@ -499,7 +499,8 @@ the rectangles in the legend start at the same horizontal position as the bar
 rectangles, there is no vertical separation between the rectangles in the
 legend (just like the bar rectangles), and
 the rectangles in the legend are in the
-same vertical order as the bar rectangles (with exports on top).
+same vertical order as the bar rectangles, with exports on top
+[@Huestegge2011Effects].
 The comparison between the geometric shapes of the data symbols
 and geometric shapes in the guide is now a case of like versus like.
 The encodings in the legend match the encodings in the data symbols
